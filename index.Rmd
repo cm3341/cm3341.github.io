@@ -1,0 +1,23 @@
+---
+title: "Holy cow!"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cosmo
+---
+
+### I have a webpage!
+
+And I can put all kinds of stuff on it!
+
+![](https://giphy.com/gifs/sesamestreet-sesame-street-50th-anniversary-kyLYXonQYYfwYDIeZl)# I don't know why this isn't working
+
+this is an awesome website with elmo and data science...
+
+<iframe src="https://giphy.com/embed/kyLYXonQYYfwYDIeZl" width="480" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/sesamestreet-sesame-street-50th-anniversary-kyLYXonQYYfwYDIeZl">via GIPHY</a></p>
+
+This is a picture of a cupcake
+<img src="Cupcake.jpg" style="width:75%">
+
+[this page](about.html)
