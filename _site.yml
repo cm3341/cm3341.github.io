@@ -5,16 +5,18 @@ navbar:
   right:
     - text: "About"
       href: about.html
-    - text: "Plots"
-      href: plot.html
     - text: "Plotly"
       href: plotly.html
     - text: "Dashboard"
       href: dashboard.html
+    - text: "Resume"
+      href: resume.html
     - icon: fa-envelope fa-lg
-      href: mailto:<you@youremail.com>
+      href: mailto:<cm3341@protonmail.com>
     - icon: fa-github fa-lg
-      href: http://github.com/<YOUR_GH_NAME>/
+      href: http://github.com/cm3341
+    - icon: fa-linkedin
+      href: https://www.linkedin.com/in/carolina-montes-garcia-a9640bb6
 output:
   html_document:
     theme: cosmo

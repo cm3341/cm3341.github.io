@@ -1,5 +1,5 @@
 ---
-title: "Dashboard!!"
+title: "Dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -15,56 +15,77 @@ library(plotly)
 
 
 ```{r}
-data("nyc_airbnb")
+data("ny_noaa")
 
-nyc_airbnb =
-  nyc_airbnb %>% 
-  mutate(rating = review_scores_location/2) %>% 
-  select(rating, neighbourhood_group, neighbourhood,
-         room_type, lat, long, price) %>% 
+ny_noaa = 
+  ny_noaa %>% 
+  filter(date >= "2008-01-01" & date <= "2010-12-31", id %in% c("USC00302454", "USC00300785", "USC00308944"))%>% 
   drop_na() %>% 
-  filter(
-    neighbourhood_group == "Manhattan",
-    room_type == "Entire home/apt",
-    price%in% 100:500
+    mutate(
+    year = lubridate::year(date),
+    month = lubridate::month(date),
+    tmin = as.numeric(tmin),
+    tmax = as.numeric(tmax),
+    id = case_when(
+      id == "USC00302454" ~ "East Sidney, NY",
+      id == "USC00300785" ~ "Boonville, NY",
+      id == "USC00308944" ~ "Wanakena Ranger School, NY")
   )
 ```
 
-Column {data-width=650}
+Column {data-width=600}
 -----------------------------------------------------------------------
 
 ### Chart A
 
 ```{r}
-nyc_airbnb %>% 
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) %>% #this is how to reorder the order of this factor by price instead of alphabetical order
+  ny_noaa %>% 
+  mutate(
+    year_month = floor_date(date, "month")) %>%
+  group_by(id, year_month) %>%
+  summarize(
+    mean_prcp = mean(prcp)) %>%
   plot_ly(
-    x = ~neighbourhood, y = ~price, color = ~neighbourhood,
-    type = "box", colors = "viridis"
+    x = ~year_month, y = ~mean_prcp, color = ~id,
+    type = "scatter", mode = "lines", colors = "viridis"
+  ) %>%
+  layout(
+    title = "Monthly Average Precipitation Over Time by Station",
+    xaxis = list(title = "Date"),
+    yaxis = list(title = "Monthly Average Precipitation (inches)"),
+    legend = list(title = list(text = "Station ID"))
   )
 ```
 
-Column {data-width=350}
+Column {data-width=400}
 -----------------------------------------------------------------------
 
 ### Chart B
 
 ```{r}
-nyc_airbnb %>% 
-  mutate(text_label = str_c("Price: $", price, "\nNeighborhood: ", neighbourhood)) %>% #the \n prefix makes it so I can add another text label in a new line
+ny_noaa %>%
   plot_ly(
-    x = ~lat, y = ~long, color = ~price, text = ~text_label, # notice the different format for aesthetic mapping in plot_tly, just a bit different from ggplot.
-  type = "scatter", mode = "markers", alpha = 0.5
+    x = ~year, y = ~tmax, color = ~id,
+    type = "box", colors = "viridis"
+  )%>%
+  layout(
+    title = "Distribution of Maximum Temperature from 2005-2010 for three NY Monitors", 
+    boxmode = "group",
+xaxis = list(
+    title = "Year",
+    tickvals = unique(ny_noaa$year)),
+    yaxis = list(title = "Maximum Temperature")
   )
 ```
 
 ### Chart C
 
 ```{r}
-nyc_airbnb %>% 
-  count(neighbourhood) %>% #need to add this count variable for bar charts
-  mutate(neighbourhood = fct_reorder(neighbourhood, n)) %>% #we reordered by count so the chart goes from smallest count to the largest count
-  plot_ly( x = ~neighbourhood, y = ~n, 
-           type = "bar")
+ny_noaa %>% 
+  filter(year >= 2009) %>% 
+  plot_ly(
+    x = ~tmin, color = ~id,
+  type = "histogram", mode = "markers", alpha = 0.5, colors = "viridis"
+  )
 ```
 
