@@ -1,0 +1,98 @@
+---
+title: "Academic and Professional Background"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cosmo
+---
+
+**Project Manager**
+
+Center for Environmental Health and Justice in Northern Manhattan (CEHJNM), Columbia University Mailman School of Public Health
+*April 2021 – Present*
+
+Manage planning and organization of key Center events, including quarterly and monthly meetings, workshops, and community forums. Serve as a liaison to the Community Engagement Core, oversee grant proposal preparation, and coordinate pilot project calls and reviewer tracking. Additionally, manage communications through newsletters, website, and social media, and supervise student interns for the Center’s administrative and community-focused initiatives.
+
+**Volunteer**
+
+Kleiman Lab, Columbia University Mailman School of Public Health
+*September 2021 – Present*
+
+Support a gene expression study related to virus exposure, contributing to off-site blood draws, database creation, and data quality checks. Collaborate on the development of a long COVID symptoms questionnaire and assist with data transition and management within the study.
+
+**Program Manager**
+
+Clinic for Aging, Anxiety, and Mood Disorders, New York State Psychiatric Institute, Columbia University Irving Medical Center
+*December 2019 – April 2021*
+
+Developed remote work infrastructure during the COVID-19 pandemic, enabling continued patient care. Led virtual onboarding, created databases, coordinated biospecimen management, and facilitated study and regulatory documentation. Contributed to clinical research report generation and manuscript editing, while overseeing recruitment and IRB submissions for multiple studies.
+
+**Community Outreach and Recruitment Manager**
+
+Clinic for Aging, Anxiety, and Mood Disorders, New York State Psychiatric Institute, Columbia University Irving Medical Center
+*December 2018 – November 2019*
+
+Built partnerships to promote mental health education among minorities and developed bilingual recruitment materials. Organized community presentations and managed recruitment processes across various media. Led the planning for the Stakeholder Advisory Board Meeting for a large-scale study and handled training of new research assistants.
+
+**Research Coordinator**
+
+Clinic for Aging, Anxiety, and Mood Disorders, New York State Psychiatric Institute, Columbia University Irving Medical Center
+*November 2016 – November 2018*
+
+Coordinated study procedures for a longitudinal depression study, overseeing recruitment, patient management, neuropsychological assessments, and regulatory documentation. Ensured compliance with study protocols and communicated findings to multidisciplinary teams in partner clinics.
+
+**Research Coordinator**
+
+NSF Funded Research Experience for Undergraduates (REU), Baruch College
+*June 2016 – June 2017*
+
+Led graduate preparation meetings and organized educational workshops and guest lectures for undergraduate fellows. Managed stipends, travel logistics, and annual conference planning, supporting fellows in presenting their research.
+
+**Lab Manager**
+
+Everyday Problem-Solving Lab, Baruch College
+*September 2014 – July 2016*
+
+Directed lab activities, overseeing a team of research assistants across multiple studies. Designed and implemented a study on exercise motivation, trained new lab members, and served as a junior editor for an undergraduate research journal.
+
+**Research Assistant**
+
+Ferrera Lab, Columbia University Irving Medical Center
+*January 2016 – May 2016*
+
+Engaged in a primate study on inferential reasoning, following strict animal care protocols. Managed data encoding and task setup while completing independent study in research methods.
+
+**Professional Tutor**
+
+Cerullo Learning Assistance Center, Bergen Community College
+*September 2013 – August 2014*
+
+Provided individualized tutoring for students, including those with disabilities, in a variety of academic subjects.
+
+## Education
+
+**Master of Public Health in Environmental Health Sciences**
+Columbia University Mailman School of Public Health
+Anticipated Graduation: *May 2026*
+
+**Bachelor of Arts in Psychology**
+School of General Studies, Columbia University
+*May 2016*
+
+**Associate of Arts**
+Bergen Community College, Phi Theta Kappa
+*December 2013*
+
+
+## Publications
+
+Frailty worsens antidepressant treatment outcomes in late life depression. The American Journal of Geriatric Psychiatry, December 2020.
+
+The COVID-19 pandemic as a traumatic stressor: Mental health responses of older adults with chronic PTSD. The American Journal of Geriatric Psychiatry, September 2020.
+
+Optimizing outcomes of treatment-resistant depression in older adults (OPTIMUM): Study design and treatment characteristics. The American Journal of Geriatric Psychiatry, October 2019.
+
+Declining Skeletal Muscle Mitochondrial Function Associated with Increased Risk of Depression in Later Life. The American Journal of Geriatric Psychiatry, September 2019.
+
+My Problems Are Solvable: Idiographic Methods Offset Age Differences in Interpersonal Problem Solving. Frontiers in Psychology, February 2019.
