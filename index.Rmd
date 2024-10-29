@@ -1,5 +1,5 @@
 ---
-title: "Holy cow!"
+title: "Home"
 output: 
   html_document:
     toc: true
@@ -7,9 +7,13 @@ output:
     theme: cosmo
 ---
 
-### I have a webpage!
+### Carolina Montes Garcia
 
-And I can put all kinds of stuff on it!
+Welcome to my personal space. My journey has been rooted in community-centered research and public health, particularly within underserved populations. I currently work as a Project Manager at Columbia University's Center for Environmental Health and Justice in Northern Manhattan, where I bring together communities, researchers, and public health initiatives. My experiences span from managing large-scale clinical research projects to developing outreach programs for minority mental health and advancing environmental justice in urban settings.
+
+Currently, my interests focus on the intersections of climate and health, with a keen interest in understanding the migration patterns of individuals displaced by climate events and the health impacts of displacement. Additionally, I am an artist who finds expression through oil, watercolor, and mixed media collage, exploring themes of the self and internal states, cultural identity, and nature.
+
+
 
 ![](https://giphy.com/gifs/sesamestreet-sesame-street-50th-anniversary-kyLYXonQYYfwYDIeZl)# I don't know why this isn't working
 
