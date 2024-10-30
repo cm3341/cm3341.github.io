@@ -36,7 +36,7 @@ ny_noaa =
 Column {data-width=600}
 -----------------------------------------------------------------------
 
-### Chart A
+### Lineplot
 
 ```{r}
   ny_noaa %>% 
@@ -60,7 +60,7 @@ Column {data-width=600}
 Column {data-width=400}
 -----------------------------------------------------------------------
 
-### Chart B
+### Boxplot
 
 ```{r}
 ny_noaa %>%
@@ -68,24 +68,42 @@ ny_noaa %>%
     x = ~year, y = ~tmax, color = ~id,
     type = "box", colors = "viridis"
   )%>%
-  layout(
-    title = "Distribution of Maximum Temperature from 2005-2010 for three NY Monitors", 
+layout(
+    title = list(
+      text = "Distribution of Maximum Temperatures from 2005-2010 for Three NY Monitors",
+      font = list(size = 12)
+    ), 
     boxmode = "group",
 xaxis = list(
     title = "Year",
     tickvals = unique(ny_noaa$year)),
-    yaxis = list(title = "Maximum Temperature")
+    yaxis = list(title = "Maximum Temps Degrees C")
   )
 ```
 
-### Chart C
+### Histogram
 
 ```{r}
 ny_noaa %>% 
   filter(year >= 2009) %>% 
   plot_ly(
     x = ~tmin, color = ~id,
-  type = "histogram", mode = "markers", alpha = 0.5, colors = "viridis"
+  type = "histogram", 
+  mode = "markers", 
+  alpha = 0.5, 
+  colors = "viridis"
+  )%>%
+  layout(
+    title = list(
+      text = "Frequency of Minimum Temperature in 2009 and 2010 for three NY Monitors",
+      font = list(size = 12) 
+    ),
+    xaxis = list(
+      title = "Minimum Temps in Degrees C", 
+      range = c(min(ny_noaa$tmin), 30)
+    ),
+    yaxis = list(
+      title = "Frequency")
   )
 ```
 

@@ -1,25 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+
 <head>
 
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
 
 
 
 <title>Dashboard</title>
-
-<meta property="og:title" content="Dashboard" />
-
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-
-<link rel="icon" href="data:image/x-icon;" type="image/x-icon">
-
-
-<script type="text/javascript">
-window.FlexDashboardComponents = [];
-</script>
 
 <script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -37,10 +29,9 @@ window.FlexDashboardComponents = [];
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/stickytableheaders-0.1.19/jquery.stickytableheaders.min.js"></script>
-<link href="site_libs/value-box-accent-static-0.6.2/theme-cosmo-value-box.css" rel="stylesheet" />
-<link href="site_libs/flexdashboard-css-0.6.2/flexdashboard.min.css" rel="stylesheet" />
-<link href="site_libs/flexdashboard-css-0.6.2/theme-cosmo.css" rel="stylesheet" />
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
@@ -49,104 +40,193 @@ window.FlexDashboardComponents = [];
 <script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
 <style type="text/css">
-/*
-  CSS for flexdashboard.js' use of Sly(). The sizing/position of this CSS needs to be
-  applied _before_ flexdashboard.js initializes, which is why this CSS has been pulled
-  out from flexdashboard.scss and inlined in the document's head.
-*/
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-.storyboard-nav button {
-  background: transparent;
-  border: 0;
-  opacity: .3;
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
   padding: 0;
-}
-
-.storyboard-nav button:hover,
-.storyboard-nav button:hover {
-  opacity: .5;
-}
-
-.storyboard-nav button:disabled,
-.storyboard-nav button:disabled {
-  opacity: .1;
-}
-
-.storyboard-nav .sbnext,
-.storyboard-nav .sbprev {
-  float: left;
-  width: 2%;
-  height: 120px;
-}
-
-.storyboard-nav .sbprev {
-  text-align: left;
-  width: 2%;
-}
-
-.storyboard-nav .sbnext {
-  float: right;
-  text-align: right;
-  margin-right: 8px;
-}
-
-.storyboard-nav .sbframelist {
-  margin: 0 auto;
-  width: 94%;
-  height: 120px;
-  overflow: hidden;
-  text-shadow: none;
-  margin-bottom: 8px;
-}
-
-.storyboard-nav .sbframelist ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-.storyboard-nav .sbframelist ul li {
-  float: left;
-  width: 270px;
-  height: 100%;
-  padding: 10px 10px 10px 10px;
-  margin-right: 8px;
-  text-align: left;
-  cursor: pointer;
-}
-
-.storyboard-nav .sbframelist ul li:last-child {
-  margin-right: 0px;
-}
-
-.sbframe-commentary {
-  width: 300px;
-}
-
-.sbframe-commentary ul {
-  padding-left: 22px;
-}
-
-.sbframe.active {
-  display: flex;
-}
-
-.sbframe:not(.active) {
-  display: none;
-}
-@media only screen and (min-width: 768px) {
-html, body {
-  height: 100%;
-}
-
-#dashboard-container {
-  height: 100%;
-}
 }
 </style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
 
 
 
@@ -154,1794 +234,219 @@ html, body {
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-<div class="container-fluid">
-<div class="navbar-header">
 
-<span class="navbar-logo pull-left">
-  
-</span>
-<span class="navbar-brand">
-  Dashboard
-  <span class="navbar-author">
-        </span>
-</span>
+<div class="container-fluid main-container">
 
-<button id="navbar-button" type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="plotly.html">Plotly</a>
+</li>
+<li>
+  <a href="dashboard.html">Dashboard</a>
+</li>
+<li>
+  <a href="resume.html">Resume</a>
+</li>
+<li>
+  <a href="mailto:&lt;cm3341@protonmail.com&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://github.com/cm3341">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/carolina-montes-garcia-a9640bb6">
+    <span class="fa fa-linkedin"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Dashboard</h1>
 
 </div>
-<div id="navbar" class="navbar-collapse collapse">
-<ul class="nav navbar-nav navbar-left">
-</ul>
-<ul class="nav navbar-nav navbar-right">
-</ul>
-</div><!--/.nav-collapse-->
-</div><!--/.container-->
-</div><!--/.navbar-->
 
-<script type="text/javascript">
 
-
-var FlexDashboard = (function () {
-
-  // initialize options
-  var _options = {};
-
-  var FlexDashboard = function() {
-
-    // default options
-    _options = $.extend(_options, {
-      theme: "cosmo",
-      fillPage: false,
-      orientation: 'columns',
-      storyboard: false,
-      defaultFigWidth: 576,
-      defaultFigHeight: 461,
-      defaultFigWidthMobile: 360,
-      defaultFigHeightMobile: 461,
-      isMobile: false,
-      isPortrait: false,
-      resize_reload: true
-    });
-  };
-
-  function init(options) {
-
-    // extend default options
-    $.extend(true, _options, options);
-
-    // add ids to sections that don't have them (pandoc won't assign ids
-    // to e.g. sections with titles consisting of only chinese characters)
-    var nextId = 1;
-    $('.level1:not([id]),.level2:not([id]),.level3:not([id])').each(function() {
-      $(this).attr('id', 'dashboard-' + nextId++);
-    });
-
-    // find navbar items
-    var navbarItems = $('#flexdashboard-navbar');
-    if (navbarItems.length)
-      navbarItems = JSON.parse(navbarItems.html());
-    addNavbarItems(navbarItems);
-
-    // find the main dashboard container
-    var dashboardContainer = $('#dashboard-container');
-
-    // resolve mobile classes
-    resolveMobileClasses(dashboardContainer);
-
-    // one time global initialization for components
-    componentsInit(dashboardContainer);
-
-    // look for a global sidebar
-    var globalSidebar = dashboardContainer.find(".section.level1.sidebar");
-    if (globalSidebar.length > 0) {
-
-      // global layout for fullscreen displays
-      if (!isMobilePhone()) {
-
-         // hoist it up to the top level
-         globalSidebar.insertBefore(dashboardContainer);
-
-         // lay it out (set width/positions)
-         layoutSidebar(globalSidebar, dashboardContainer);
-
-      // tuck sidebar into first page for mobile phones
-      } else {
-
-        // convert it into a level3 section
-        globalSidebar.removeClass('sidebar');
-        globalSidebar.removeClass('level1');
-        globalSidebar.addClass('level3');
-        var h1 = globalSidebar.children('h1');
-        var h3 = $('<h3></h3>');
-        h3.append(h1.contents());
-        h3.insertBefore(h1);
-        h1.detach();
-
-        // move it into the first page
-        var page = dashboardContainer.find('.section.level1').first();
-        if (page.length > 0)
-          page.prepend(globalSidebar);
-      }
-    }
-
-    // look for pages to layout
-    var pages = $('div.section.level1');
-    if (pages.length > 0) {
-
-        // find the navbar and collapse on clicked
-        var navbar = $('#navbar');
-        navbar.on("click", "a[data-toggle!=dropdown]", null, function () {
-           navbar.collapse('hide');
-        });
-
-        // envelop the dashboard container in a tab content div
-        dashboardContainer.wrapInner('<div class="tab-content"></div>');
-
-        pages.each(function(index) {
-
-          // lay it out
-          layoutDashboardPage($(this));
-
-          // add it to the navbar
-          addToNavbar($(this), index === 0);
-
-        });
-
-    } else {
-
-      // remove the navbar and navbar button if we don't
-      // have any navbuttons
-      if (navbarItems.length === 0) {
-        $('#navbar').remove();
-        $('#navbar-button').remove();
-      }
-
-      // add the storyboard class if requested
-      if (_options.storyboard)
-        dashboardContainer.addClass('storyboard');
-
-      // layout the entire page
-      layoutDashboardPage(dashboardContainer);
-    }
-
-    // if we are in shiny we need to trigger a window resize event to
-    // force correct layout of shiny-bound-output elements
-    if (isShinyDoc())
-      $(window).trigger('resize');
-
-    // make main components visible
-    $('.section.sidebar').css('visibility', 'visible');
-    dashboardContainer.css('visibility', 'visible');
-
-    // handle location hash
-    handleLocationHash();
-
-    // intialize prism highlighting
-    initPrismHighlighting();
-
-    // record mobile and orientation state then register a handler
-    // to refresh if resize_reload is set to true and it changes
-    _options.isMobile = isMobilePhone();
-    _options.isPortrait = isPortrait();
-    if (_options.resize_reload) {
-      $(window).on('resize', function() {
-        if (_options.isMobile !== isMobilePhone() ||
-            _options.isPortrait !== isPortrait()) {
-          window.location.reload();
-        }
-      });
-    } else {
-      // if in desktop mode and resizing to mobile, make sure the heights are 100%
-      // This enforces what `fillpage.css` does for "wider" pages.
-      // Since we are not reloading once the page becomes small, we need to force the height to 100%
-      // This is a new situation introduced when `_options.resize_reload` is `false`
-      if (! _options.isMobile) {
-        // only add if `fillpage.css` was added in the first place
-        if (_options.fillPage) {
-          // fillpage.css
-          $("html,body,#dashboard").css("height", "100%");
-        }
-      }
-    }
-    // trigger layoutcomplete event
-    dashboardContainer.trigger('flexdashboard:layoutcomplete');
-  }
-
-  function resolveMobileClasses(dashboardContainer) {
-     // add top level layout class
-    dashboardContainer.addClass(isMobilePhone() ? 'mobile-layout' :
-                                                  'desktop-layout');
-
-    // look for .mobile sections and add .no-mobile to their peers
-    var mobileSections = $('.section.mobile');
-    mobileSections.each(function() {
-       var id = $(this).attr('id');
-       var nomobileId = id.replace(/-\d+$/, '');
-       $('#' + nomobileId).addClass('no-mobile');
-    });
-  }
-
-  function addNavbarItems(navbarItems) {
-
-    var navbarLeft = $('ul.navbar-left');
-    var navbarRight = $('ul.navbar-right');
-
-    for (var i = 0; i<navbarItems.length; i++) {
-
-      // get the item
-      var item = navbarItems[i];
-
-      // determine the container
-      var container = null;
-      if (item.align === "left")
-        container = navbarLeft;
-      else
-        container = navbarRight;
-
-      // navbar menu if we have multiple items
-      if (item.items) {
-        var menu = navbarMenu(null, item.icon, item.title, container);
-        for (var j = 0; j<item.items.length; j++) {
-          var subItem = item.items[j];
-          var li = $('<li></li>');
-          var a = navbarLink(subItem.icon, subItem.title, subItem.href, subItem.target);
-          a.removeClass("nav-link").addClass("dropdown-item");
-          li.append(a);
-          menu.append(li);
-        }
-      } else {
-        var li = $('<li class="nav-item"></li>');
-        li.append(navbarLink(item.icon, item.title, item.href, item.target));
-        container.append(li);
-      }
-    }
-  }
-
-  // create or get a reference to an existing dropdown menu
-  function navbarMenu(id, icon, title, container) {
-    var existingMenu = [];
-    if (id)
-      existingMenu = container.children('#' + id);
-    if (existingMenu.length > 0) {
-      return existingMenu.children('ul');
-    } else {
-      var li = $('<li class="nav-item"></li>');
-      if (id)
-        li.attr('id', id);
-      li.addClass('dropdown');
-      // auto add "Share" title on mobile if necessary
-      if (!title && icon && (icon === "fa-share-alt") && isMobilePhone())
-        title = "Share";
-      if (title) {
-        title = title + ' <span class="caret"></span>';
-      }
-      var a = navbarLink(icon, title, "#");
-      a.addClass('dropdown-toggle');
-      a.attr('data-toggle', 'dropdown');
-      a.attr('data-bs-toggle', 'dropdown');
-      a.attr('role', 'button');
-      a.attr('aria-expanded', 'false');
-      li.append(a);
-      var ul = $('<ul class="dropdown-menu"></ul>');
-      ul.attr('role', 'menu');
-      li.append(ul);
-      container.append(li);
-      return ul;
-    }
-  }
-
-  function addToNavbar(page, active) {
-
-    // capture the id and data-icon attribute (if any)
-    var id = page.attr('id');
-    var icon = page.attr('data-icon');
-    var navmenu = page.attr('data-navmenu');
-    var navmenuIcon = page.attr('data-navmenu-icon');
-
-    // get hidden state (transfer this to navbar)
-    var hidden = page.hasClass('hidden');
-    page.removeClass('hidden');
-
-    // sanitize the id for use with bootstrap tabs
-    id = id.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_');
-    page.attr('id', id);
-
-    // get the wrapper
-    var wrapper = page.closest('.dashboard-page-wrapper');
-
-    // move the id to the wrapper
-    page.removeAttr('id');
-    wrapper.attr('id', id);
-
-    // add the tab-pane class to the wrapper
-    wrapper.addClass('tab-pane');
-
-    // get a reference to the h1, discover its inner contens, then detach it
-    var h1 = wrapper.find('h1').first();
-    var title = h1.contents();
-    h1.detach();
-
-    // create a navbar item
-    var li = $('<li></li>');
-    var a = navbarLink(icon, title, '#' + id);
-    a.attr('data-toggle', 'tab');
-    a.attr('data-bs-toggle', 'tab');
-    li.append(a);
-
-    // add it to the navbar (or navbar menu if specified)
-    var container = $('ul.navbar-left');
-    if (navmenu) {
-      var menuId = navmenu.replace(/\s+/g, '');
-      var menu = navbarMenu(menuId, navmenuIcon, navmenu, container);
-      li.find("> a").removeClass("nav-link").addClass("dropdown-item");
-      menu.append(li);
-    } else {
-      li.addClass("nav-item")
-      container.append(li);
-    }
-
-    // mark active tab and corresponding nav menu item
-    if (active)
-      $(a).tab("show");
-
-    // hide it if requested
-    if (hidden)
-      li.addClass('hidden');
-  }
-
-  function navbarLink(icon, title, href, target) {
-
-    var a = $('<a class="nav-link"></a>');
-    if (icon) {
-
-      // get the name of the icon set and icon
-      var dashPos = icon.indexOf("-");
-      var iconSet = null;
-      var iconSplit = icon.split(" ");
-      if (iconSplit.length > 1) {
-        iconSet = iconSplit[0];
-        icon = iconSplit.slice(1).join(" ");
-      } else {
-        iconSet = icon.substring(0, dashPos);
-      }
-      var iconName = icon.substring(dashPos + 1);
-
-      // create the icon
-      var iconElement = $('<span class="' + iconSet + ' ' + icon + '"></span>');
-      if (title)
-        iconElement.css('margin-right', '7px');
-      a.append(iconElement);
-      // if href is null see if we can auto-generate based on icon (e.g. social)
-      if (!href)
-        maybeGenerateLinkFromIcon(iconName, a);
-    }
-    if (title)
-      a.append(title);
-
-    // add the href.
-    if (href) {
-      if (href === "source_embed") {
-        a.attr('href', '#');
-        a.attr('data-featherlight', "#flexdashboard-source-code");
-        a.featherlight({
-            beforeOpen: function(event){
-              $('body').addClass('unselectable');
-            },
-            afterClose: function(event){
-              $('body').removeClass('unselectable');
-            }
-        });
-      } else {
-        a.attr('href', href);
-      }
-    }
-
-    // add the arget
-    if (target)
-      a.attr('target', target);
-
-    return a;
-  }
-
-  // auto generate a link from an icon name (e.g. twitter) when possible
-  function maybeGenerateLinkFromIcon(iconName, a) {
-
-     var serviceLinks = {
-      "twitter": "https://twitter.com/share?text=" + encodeURIComponent(document.title) + "&url="+encodeURIComponent(location.href),
-      "facebook": "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href),
-      "linkedin": "https://www.linkedin.com/shareArticle?mini=true&url="+encodeURIComponent(location.href) + "&title=" + encodeURIComponent(document.title),
-      "pinterest": "https://pinterest.com/pin/create/link/?url="+encodeURIComponent(location.href) + "&description=" + encodeURIComponent(document.title)
-    };
-
-    var makeSocialLink = function(a, href) {
-      a.attr('href', '#');
-      a.on('click', function(e) {
-        e.preventDefault();
-        window.open(href);
-      });
-    };
-
-    $.each(serviceLinks, function(key, value) {
-      if (iconName.indexOf(key) !== -1)
-        makeSocialLink(a, value);
-    });
-  }
-
-  // layout a dashboard page
-  function layoutDashboardPage(page) {
-
-    // use a page wrapper so that free form content above the
-    // dashboard appears at the top rather than the side (as it
-    // would without the wrapper in a column orientation)
-    var wrapper = $('<div class="dashboard-page-wrapper"></div>');
-    page.wrap(wrapper);
-
-    // if there are no level2 or level3 headers synthesize a level3
-    // header to contain the (e.g. frame it, scroll container, etc.)
-    var headers = page.find('h2,h3');
-    if (headers.length === 0)
-      page.wrapInner('<div class="section level3"></div>');
-
-    // hoist up any content before level 2 or level 3 headers
-    var children = page.children();
-    children.each(function(index) {
-      if ($(this).hasClass('level2') || $(this).hasClass('level3'))
-        return false;
-      $(this).insertBefore(page);
-    });
-
-    // determine orientation and fillPage behavior for distinct media
-    var orientation, fillPage, storyboard;
-
-    // media: mobile phone
-    if (isMobilePhone()) {
-
-      // if there is a sidebar we need to ensure it's content
-      // is properly framed as an h3
-      var sidebar = page.find('.section.sidebar');
-      sidebar.removeClass('sidebar');
-      sidebar.wrapInner('<div class="section level3"></div>');
-      var h2 = sidebar.find('h2');
-      var h3 = $('<h3></h3>');
-      h3.append(h2.contents());
-      h3.insertBefore(h2);
-      h2.detach();
-
-      // wipeout h2 elements then enclose them in a single h2
-      var level2 = page.find('div.section.level2');
-      level2.each(function() {
-        level2.children('h2').remove();
-        level2.children().unwrap();
-      });
-      page.wrapInner('<div class="section level2"></div>');
-
-      // substitute mobile images
-      if (isPortrait()) {
-        var mobileFigures = $('img.mobile-figure');
-        mobileFigures.each(function() {
-          // get the src (might be base64 encoded)
-          var src = $(this).attr('src');
-
-          // find it's peer
-          var id = $(this).attr('data-mobile-figure-id');
-          var img = $('img[data-figure-id=' + id + "]");
-          img.attr('src', src)
-             .attr('width', _options.defaultFigWidthMobile)
-             .attr('height', _options.defaultFigHeightMobile);
-        });
-      }
-
-      // hoist storyboard commentary into it's own section
-      if (page.hasClass('storyboard')) {
-        var commentaryHR = page.find('div.section.level3 hr');
-        commentaryHR.each(function() {
-          var commentary = $(this).nextAll().detach();
-          var commentarySection = $('<div class="section level3"></div>');
-          commentarySection.append(commentary);
-          commentarySection.insertAfter($(this).closest('div.section.level3'));
-          $(this).remove();
-        });
-      }
-
-      // force a non full screen layout by columns
-      orientation = _options.orientation = 'columns';
-      fillPage = _options.fillPage = false;
-      storyboard = _options.storyboard = false;
-
-    // media: desktop
-    } else {
-
-      // determine orientation
-      orientation = page.attr('data-orientation');
-      if (orientation !== 'rows' && orientation != 'columns')
-        orientation = _options.orientation;
-
-      // determine storyboard mode
-      storyboard = page.hasClass('storyboard');
-
-      // fillPage based on options (force for storyboard)
-      fillPage = _options.fillPage || storyboard;
-
-      // handle sidebar
-      var sidebar = page.find('.section.level2.sidebar');
-      if (sidebar.length > 0)
-        layoutSidebar(sidebar, page);
-    }
-
-    // give it and it's parent divs height: 100% if we are in fillPage mode
-    if (fillPage) {
-      page.addClass('vertical-layout-fill');
-      page.css('height', '100%');
-      page.parents('div').css('height', '100%');
-    } else {
-      page.addClass('vertical-layout-scroll');
-    }
-
-    // perform the layout
-    if (storyboard)
-      layoutPageAsStoryboard(page);
-    else if (orientation === 'rows')
-      layoutPageByRows(page, fillPage);
-    else if (orientation === 'columns')
-      layoutPageByColumns(page, fillPage);
-  }
-
-  function layoutSidebar(sidebar, content) {
-
-    // get it out of the header hierarchy
-    sidebar = sidebar.first();
-    if (sidebar.hasClass('level1')) {
-      sidebar.removeClass('level1');
-      sidebar.children('h1').remove();
-    } else if (sidebar.hasClass('level2')) {
-      sidebar.removeClass('level2');
-      sidebar.children('h2').remove();
-    }
-
-    // determine width
-    var sidebarWidth = isTablet() ? 220 : 250;
-    var dataWidth = parseInt(sidebar.attr('data-width'));
-    if (dataWidth)
-      sidebarWidth = dataWidth;
-
-    // set the width and shift the page right to accomodate the sidebar
-    sidebar.css('width', sidebarWidth + 'px');
-    content.css('padding-left', sidebarWidth + 'px');
-
-    // wrap it's contents in a form
-    sidebar.wrapInner($('<form></form>'));
-  }
-
-  function layoutPageAsStoryboard(page) {
-
-    // create storyboard navigation
-    var nav = $('<div class="storyboard-nav"></div>');
-
-    // add navigation buttons
-    var prev = $('<button class="sbprev"><i class="fa fa-angle-left"></i></button>');
-    nav.append(prev);
-    var next= $('<button class="sbnext"><i class="fa fa-angle-right"></i></button>');
-    nav.append(next);
-
-    // add navigation frame
-    var frameList = $('<div class="sbframelist"></div>');
-    nav.append(frameList);
-    var ul = $('<ul></ul>');
-    frameList.append(ul);
-
-     // find all the level3 sections (those are the storyboard frames)
-    var frames = page.find('div.section.level3');
-    frames.each(function() {
-
-      // mark it
-      $(this).addClass('sbframe');
-
-      // divide it into chart content and (optional) commentary
-      $(this).addClass('dashboard-column-orientation');
-
-      // stuff the chart into it's own div w/ flex
-      $(this).wrapInner('<div class="sbframe-component"></div>');
-      setFlex($(this), 1);
-      var frame = $(this).children('.sbframe-component');
-
-      // extract the title from the h3
-      var li = $('<li></li>');
-      var h3 = frame.children('h3');
-      li.append(h3.contents());
-      h3.detach();
-      ul.append(li);
-
-      // extract commentary
-      var hr = frame.children('hr');
-      if (hr.length) {
-        var commentary = hr.nextAll().detach();
-        hr.remove();
-        var commentaryFrame = $('<div class="sbframe-commentary"></div>');
-        commentaryFrame.addClass('flowing-content-shim');
-        commentaryFrame.addClass('flowing-content-container');
-        commentaryFrame.append(commentary);
-        $(this).append(commentaryFrame);
-
-        // look for a data-commentary-width attribute
-        var commentaryWidth = $(this).attr('data-commentary-width');
-        if (commentaryWidth)
-          commentaryFrame.css('width', commentaryWidth + 'px');
-      }
-
-      // layout the chart (force flex)
-      var result = layoutChart(frame, true);
-
-      // ice the notes if there are none
-      if (!result.notes)
-        frame.find('.chart-notes').remove();
-
-      // set flex on chart
-      setFlex(frame, 1);
-    });
-
-    // create a div to hold all the frames
-    var frameContent = $('<div class="sbframe-content"></div>');
-    frameContent.addClass('dashboard-row-orientation');
-    frameContent.append(frames.detach());
-
-    // row orientation to stack nav and frame content
-    page.addClass('dashboard-row-orientation');
-    page.append(nav);
-    page.append(frameContent);
-    setFlex(frameContent, 1);
-
-    // initialize sly
-    var sly = new Sly(frameList, {
-    		horizontal: true,
-    		itemNav: 'basic',
-    		smart: true,
-    		activateOn: 'click',
-    		startAt: 0,
-    		scrollBy: 1,
-    		activatePageOn: 'click',
-    		speed: 200,
-    		moveBy: 600,
-    		dragHandle: true,
-    		dynamicHandle: true,
-    		clickBar: true,
-    		keyboardNavBy: 'items',
-    		next: next,
-    		prev: prev
-    	}).init();
-
-    // make first frame active
-    frames.removeClass('active');
-    frames.first().addClass('active');
-
-    // subscribe to frame changed events
-    sly.on('active', function (eventName, itemIndex) {
-      frames.removeClass('active');
-      frames.eq(itemIndex).addClass('active')
-                          .trigger('shown');
-    });
-  }
-
-  function layoutPageByRows(page, fillPage) {
-
-    // row orientation
-    page.addClass('dashboard-row-orientation');
-
-    // find all the level2 sections (those are the rows)
-    var rows = page.find('div.section.level2');
-
-    // if there are no level2 sections then treat the
-    // entire page as if it's a level 2 section
-    if (rows.length === 0) {
-      page.wrapInner('<div class="section level2"></div>');
-      rows = page.find('div.section.level2');
-    }
-
-    rows.each(function () {
-
-      // flags
-      var haveNotes = false;
-      var haveFlexHeight = true;
-
-      // remove the h2
-      $(this).children('h2').remove();
-
-      // check for a tabset
-      var isTabset = $(this).hasClass('tabset');
-      if (isTabset)
-        layoutTabset($(this));
-
-      // give it row layout semantics if it's not a tabset
-      if (!isTabset)
-        $(this).addClass('dashboard-row');
-
-      // find all of the level 3 subheads
-      var columns = $(this).find('div.section.level3');
-
-      // determine figureSizes sizes
-      var figureSizes = chartFigureSizes(columns);
-
-      // fixup the columns
-      columns.each(function(index) {
-
-        // layout the chart (force flex if we are in a tabset)
-        var result = layoutChart($(this), isTabset);
-
-        // update flexHeight state
-        if (!result.flex)
-          haveFlexHeight = false;
-
-        // update state
-        if (result.notes)
-          haveNotes = true;
-
-        // set the column flex based on the figure width
-        // (value boxes will just get the default figure width)
-        var chartWidth = figureSizes[index].width;
-        setFlex($(this), chartWidth + ' ' + chartWidth + ' 0px');
-
-      });
-
-      // remove empty chart note divs
-      if (isTabset)
-        $(this).find('.chart-notes').filter(function() {
-            return $(this).html() === "&nbsp;";
-        }).remove();
-      if (!haveNotes)
-        $(this).find('.chart-notes').remove();
-
-       // make it a flexbox row
-      if (haveFlexHeight)
-        $(this).addClass('dashboard-row-flex');
-
-      // now we can set the height on all the wrappers (based on maximum
-      // figure height + room for title and notes, or data-height on the
-      // container if specified). However, don't do this if there is
-      // no flex on any of the constituent columns
-      var flexHeight = null;
-      var dataHeight = parseInt($(this).attr('data-height'));
-      if (dataHeight)
-        flexHeight = adjustedHeight(dataHeight, columns.first());
-      else if (haveFlexHeight)
-        flexHeight = maxChartHeight(figureSizes, columns);
-      if (flexHeight) {
-        if (fillPage)
-          setFlex($(this), flexHeight + ' ' + flexHeight + ' 0px');
-        else {
-          $(this).css('height', flexHeight + 'px');
-          setFlex($(this), '0 0 ' + flexHeight + 'px');
-        }
-      }
-
-    });
-  }
-
-  function layoutPageByColumns(page, fillPage) {
-
-    // column orientation
-    page.addClass('dashboard-column-orientation');
-
-    // find all the level2 sections (those are the columns)
-    var columns = page.find('div.section.level2');
-
-    // if there are no level2 sections then treat the
-    // entire page as if it's a level 2 section
-    if (columns.length === 0) {
-      page.wrapInner('<div class="section level2"></div>');
-      columns = page.find('div.section.level2');
-    }
-
-    // layout each column
-    columns.each(function (index) {
-
-      // remove the h2
-      $(this).children('h2').remove();
-
-      // make it a flexbox column
-      $(this).addClass('dashboard-column');
-
-      // check for a tabset
-      var isTabset = $(this).hasClass('tabset');
-      if (isTabset)
-        layoutTabset($(this));
-
-      // find all the h3 elements
-      var rows = $(this).find('div.section.level3');
-
-      // get the figure sizes for the rows
-      var figureSizes = chartFigureSizes(rows);
-
-      // column flex is the max row width (or data-width if specified)
-      var flexWidth;
-      var dataWidth = parseInt($(this).attr('data-width'));
-      if (dataWidth)
-        flexWidth = dataWidth;
-      else
-        flexWidth = maxChartWidth(figureSizes);
-      setFlex($(this), flexWidth + ' ' + flexWidth + ' 0px');
-
-      // layout each chart
-      rows.each(function(index) {
-
-        // perform the layout
-        var result = layoutChart($(this), false);
-
-        // ice the notes if there are none
-        if (!result.notes)
-          $(this).find('.chart-notes').remove();
-
-        // set flex height based on figHeight, then adjust
-        if (result.flex) {
-          var chartHeight = figureSizes[index].height;
-          chartHeight = adjustedHeight(chartHeight, $(this));
-          if (fillPage)
-            setFlex($(this), chartHeight + ' ' + chartHeight + ' 0px');
-          else {
-            $(this).css('height', chartHeight + 'px');
-            setFlex($(this), chartHeight + ' ' + chartHeight + ' ' + chartHeight + 'px');
-          }
-        }
-      });
-    });
-  }
-
-  function chartFigureSizes(charts) {
-
-    // sizes
-    var figureSizes = new Array(charts.length);
-
-    // check each chart
-    charts.each(function(index) {
-
-      // start with default
-      figureSizes[index] = {
-        width: _options.defaultFigWidth,
-        height: _options.defaultFigHeight
-      };
-
-      // look for data-height or data-width then knit options
-      var dataWidth = parseInt($(this).attr('data-width'));
-      var dataHeight = parseInt($(this).attr('data-height'));
-      var knitrOptions = $(this).find('.knitr-options:first');
-      var knitrWidth, knitrHeight;
-      if (knitrOptions) {
-        knitrWidth = parseInt(knitrOptions.attr('data-fig-width'));
-        knitrHeight =  parseInt(knitrOptions.attr('data-fig-height'));
-      }
-
-      // width
-      if (dataWidth)
-        figureSizes[index].width = dataWidth;
-      else if (knitrWidth)
-        figureSizes[index].width = knitrWidth;
-
-      // height
-      if (dataHeight)
-        figureSizes[index].height = dataHeight;
-      else if (knitrHeight)
-        figureSizes[index].height = knitrHeight;
-    });
-
-    // return sizes
-    return figureSizes;
-  }
-
-  function maxChartHeight(figureSizes, charts) {
-
-    // first compute the maximum height
-    var maxHeight = _options.defaultFigHeight;
-    for (var i = 0; i<figureSizes.length; i++)
-      if (figureSizes[i].height > maxHeight)
-        maxHeight = figureSizes[i].height;
-
-    // now add offests for chart title and chart notes
-    if (charts.length)
-      maxHeight = adjustedHeight(maxHeight, charts.first());
-
-    return maxHeight;
-  }
-
-  function adjustedHeight(height, chart) {
-    if (chart.length > 0) {
-      var chartTitle = chart.find('.chart-title');
-      if (chartTitle.length)
-        height += chartTitle.first().outerHeight();
-      var chartNotes = chart.find('.chart-notes');
-      if (chartNotes.length)
-        height += chartNotes.first().outerHeight();
-    }
-    return height;
-  }
-
-  function maxChartWidth(figureSizes) {
-    var maxWidth = _options.defaultFigWidth;
-    for (var i = 0; i<figureSizes.length; i++)
-      if (figureSizes[i].width > maxWidth)
-        maxWidth = figureSizes[i].width;
-    return maxWidth;
-  }
-
-  // layout a chart
-  function layoutChart(chart, forceFlex) {
-
-    // state to return
-    var result = {
-      notes: false,
-      flex: false
-    };
-
-    // extract the title
-    var title = extractTitle(chart);
-
-    // find components that apply to this container
-    var components = componentsFind(chart);
-
-    // if it's a custom component then call it and return
-    var customComponents = componentsCustom(components);
-    if (customComponents.length) {
-      componentsLayout(customComponents, title, chart);
-      result.notes = false;
-      result.flex = forceFlex || componentsFlex(customComponents);
-      return result;
-    }
-
-    // put all the content in a chart wrapper div
-    chart.addClass('chart-wrapper');
-    chart.wrapInner('<div class="chart-stage"></div>');
-    var chartContent = chart.children('.chart-stage');
-
-    // flex the content if appropriate
-    result.flex = forceFlex || componentsFlex(components);
-    if (result.flex) {
-      // add flex classes
-      chart.addClass('chart-wrapper-flex');
-      chartContent.addClass('chart-stage-flex');
-
-      // additional shim to break out of flexbox sizing
-      chartContent.wrapInner('<div class="chart-shim"></div>');
-      chartContent = chartContent.children('.chart-shim');
-    }
-
-    // set custom data-padding attribute
-    var pad = chart.attr('data-padding');
-    if (pad) {
-      if (pad === "0")
-        chart.addClass('no-padding');
-      else {
-        pad = pad + 'px';
-        chartContent.css('left', pad)
-                    .css('top', pad)
-                    .css('right', pad)
-                    .css('bottom', pad)
-      }
-    }
-
-    // call compoents
-    componentsLayout(components, title, chartContent);
-
-    // also activate components on shiny output
-    findShinyOutput(chartContent).on('shiny:value',
-      function(event) {
-        var element = $(event.target);
-        setTimeout(function() {
-
-          // see if we opted out of flex based on our output (for shiny
-          // we can't tell what type of output we have until after the
-          // value is bound)
-          var components = componentsFind(element);
-          var flex = forceFlex || componentsFlex(components);
-          if (!flex) {
-            chart.css('height', "");
-            setFlex(chart, "");
-            chart.removeClass('chart-wrapper-flex');
-            chartContent.removeClass('chart-stage-flex');
-            chartContent.children().unwrap();
-          }
-
-          // perform layout
-          componentsLayout(components, title, element.parent());
-        }, 10);
-      });
-
-    // add the title
-    var chartTitle = $('<div class="chart-title"></div>');
-    chartTitle.append(title);
-    chart.prepend(chartTitle);
-
-    // add the notes section
-    var chartNotes = $('<div class="chart-notes"></div>');
-    chartNotes.html('&nbsp;');
-    chart.append(chartNotes);
-
-    // attempt to extract notes if we have a component
-    if (components.length)
-      result.notes = extractChartNotes(chartContent, chartNotes);
-
-    // return result
-    return result;
-  }
-
-  // build a tabset from a section div with the .tabset class
-  function layoutTabset(tabset) {
-
-    // check for fade option
-    var fade = tabset.hasClass("tabset-fade");
-    var pills = tabset.hasClass("tabset-pills");
-    var navClass = pills ? "nav-pills" : "nav-tabs";
-
-    // determine the heading level of the tabset and tabs
-    var match = tabset.attr('class').match(/level(\d) /);
-    if (match === null)
-      return;
-    var tabsetLevel = Number(match[1]);
-    var tabLevel = tabsetLevel + 1;
-
-    // find all subheadings immediately below
-    var tabs = tabset.find("div.section.level" + tabLevel);
-    if (!tabs.length)
-      return;
-
-    // create tablist and tab-content elements
-    var tabList = $('<ul class="nav ' + navClass + '" role="tablist"></ul>');
-    $(tabs[0]).before(tabList);
-    var tabContent = $('<div class="tab-content"></div>');
-    $(tabs[0]).before(tabContent);
-
-    // build the tabset
-    var activeTab = 0;
-    tabs.each(function(i) {
-
-      // get the tab div
-      var tab = $(tabs[i]);
-
-      // get the id then sanitize it for use with bootstrap tabs
-      var id = tab.attr('id');
-
-      // see if this is marked as the active tab
-      if (tab.hasClass('active'))
-        activeTab = i;
-
-      // sanitize the id for use with bootstrap tabs
-      id = id.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_');
-      tab.attr('id', id);
-
-      // get the heading element within it and grab it's text
-      var heading = tab.find('h' + tabLevel + ':first');
-      var headingDom = heading.contents();
-
-      // build and append the tab list item
-      var a = $('<a role="tab" data-toggle="tab" data-bs-toggle="tab" class="nav-link"></a>');
-      a.append(headingDom);
-      a.attr('href', '#' + id);
-      a.attr('aria-controls', id);
-      var li = $('<li role="presentation" class="nav-item"></li>');
-      li.append(a);
-      tabList.append(li);
-
-      // set it's attributes
-      tab.attr('role', 'tabpanel');
-      tab.addClass('tab-pane');
-      tab.addClass('tabbed-pane');
-      tab.addClass('no-title');
-      if (fade)
-        tab.addClass('fade');
-
-      // move it into the tab content div
-      tab.detach().appendTo(tabContent);
-    });
-
-    // set active tab
-    $(tabList.children()[activeTab]).tab("show");
-    var active = $(tabContent.children('div.section')[activeTab]);
-    active.addClass('active');
-    if (fade)
-      active.addClass('in');
-
-    // add nav-tabs-custom
-    tabset.addClass('nav-tabs-custom');
-
-    // internal layout is dashboard-column with tab-content flexing
-    tabset.addClass('dashboard-column');
-    setFlex(tabContent, 1);
-  }
-
-  // one time global initialization for components
-  function componentsInit(dashboardContainer) {
-    for (var i=0; i<window.FlexDashboardComponents.length; i++) {
-      var component = window.FlexDashboardComponents[i];
-      if (component.init)
-        component.init(dashboardContainer);
-    }
-  }
-
-  // find components that apply within a container
-  function componentsFind(container) {
-
-    // look for components
-    var components = [];
-    for (var i=0; i<window.FlexDashboardComponents.length; i++) {
-      var component = window.FlexDashboardComponents[i];
-      if (component.find(container).length)
-        components.push(component);
-    }
-
-    // if there were none then use a special flowing content component
-    // that just adds a scrollbar in fillPage mode
-    if (components.length == 0) {
-      components.push({
-        find: function(container) {
-          return container;
-        },
-
-        flex: function(fillPage) {
-          return fillPage;
-        },
-
-        layout: function(title, container, element, fillPage) {
-          if (fillPage) {
-            container.addClass('flowing-content-shim');
-            container.addClass('flowing-content-container');
-          }
-        }
-      });
-    }
-
-    return components;
-  }
-
-  // if there is a custom component then pick it out
-  function componentsCustom(components) {
-    var customComponent = [];
-    for (var i=0; i<components.length; i++)
-      if (components[i].type === "custom") {
-        customComponent.push(components[i]);
-        break;
-      }
-    return customComponent;
-  }
-
-  // query all components for flex
-  function componentsFlex(components) {
-
-    // no components at all means no flex
-    if (components.length === 0)
-      return false;
-
-    // otherwise query components (assume true unless we see false)
-    var isMobile = isMobilePhone();
-    for (var i=0; i<components.length; i++)
-      if (components[i].flex && !components[i].flex(_options.fillPage))
-        return false;
-    return true;
-  }
-
-  // layout all components
-  function componentsLayout(components, title, container) {
-    var isMobile = isMobilePhone();
-    for (var i=0; i<components.length; i++) {
-      var element = components[i].find(container);
-      if (components[i].layout) {
-        // call layout (don't call other components if it returns false)
-        var result = components[i].layout(title, container, element, _options.fillPage);
-        if (result === false)
-          return;
-      }
-    }
-  }
-
-  // get a reference to the h3, discover it's inner html, and remove it
-  function extractTitle(container) {
-    var h3 = container.children('h3').first();
-    var title = '';
-    if (!container.hasClass('no-title'))
-      title = h3.contents();
-    h3.detach();
-    return title;
-  }
-
-  // extract chart notes
-  function extractChartNotes(chartContent, chartNotes) {
-    // look for a terminating blockquote or image caption
-    var blockquote = chartContent.children('blockquote:last-child');
-    var caption = chartContent.children('div.image-container')
-                              .children('p.caption');
-    if (blockquote.length) {
-      chartNotes.empty().append(blockquote.children('p:first-child').contents());
-      blockquote.remove();
-      return true;
-    } else if (caption.length) {
-      chartNotes.empty().append(caption.contents());
-      caption.remove();
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  function findShinyOutput(chartContent) {
-    return chartContent.find('.shiny-text-output, .shiny-html-output');
-  }
-
-  // safely detect rendering on a mobile phone
-  function isMobilePhone() {
-    try
-    {
-      return ! window.matchMedia("only screen and (min-width: 768px)").matches;
-    }
-    catch(e) {
-      return false;
-    }
-  }
-
-  function isFillPage() {
-    return _options.fillPage;
-  }
-
-  // detect portrait mode
-  function isPortrait() {
-    return ($(window).width() < $(window).height());
-  }
-
-  // safely detect rendering on a tablet
-  function isTablet() {
-    try
-    {
-      return window.matchMedia("only screen and (min-width: 769px) and (max-width: 992px)").matches;
-    }
-    catch(e) {
-      return false;
-    }
-  }
-
-  // test whether this is a shiny doc
-  function isShinyDoc() {
-    return (typeof(window.Shiny) !== "undefined" && !!window.Shiny.outputBindings);
-  }
-
-  // set flex using vendor specific prefixes
-  function setFlex(el, flex) {
-    el.css('-webkit-box-flex', flex)
-      .css('-webkit-flex', flex)
-      .css('-ms-flex', flex)
-      .css('flex', flex);
-  }
-
-  // support bookmarking of pages
-  function handleLocationHash() {
-
-    // restore tab/page from bookmark
-    var hash = window.decodeURIComponent(window.location.hash);
-    if (hash.length > 0) {
-      // Update the tab without .showPage() so that we don't change page history
-      $('ul.nav a[href="' + hash + '"]').tab('show');
-    }
-
-    // navigate to a tab when the history changes
-    window.addEventListener("popstate", function(e) {
-      var hash = window.decodeURIComponent(window.location.hash);
-      var activeTab = $('ul.nav a[href="' + hash + '"]');
-      if (activeTab.length) {
-        activeTab.tab('show');
-      } else {
-        // returning to the base page URL without a hash activates first tab
-        $('ul.nav a:first').tab('show');
-      }
-    });
-
-    // add a hash to the URL when the user clicks on a tab/page
-    $('.navbar-nav a[data-toggle="tab"]').on('click', function(e) {
-      var baseUrl = FlexDashboardUtils.urlWithoutHash(window.location.href);
-      var hash = FlexDashboardUtils.urlHash($(this).attr('href'));
-      var href = baseUrl + hash;
-      FlexDashboardUtils.setLocation(href);
-    });
-
-    // handle clicks of other links that should activate pages
-    var navPages = $('ul.navbar-nav li a[data-toggle=tab]');
-    navPages.each(function() {
-      var href =  $(this).attr('href');
-      var links = $('a[href="' + href + '"][data-toggle!=tab]');
-      links.each(function() {
-        $(this).on('click', function(e) {
-          window.FlexDashboardUtils.showPage(href);
-        });
-      });
-    });
-  }
-
-  // tweak Prism highlighting
-  function initPrismHighlighting() {
-
-    if (window.Prism) {
-      Prism.languages.insertBefore('r', 'comment', {
-        'heading': [
-          {
-            // title 1
-        	  // =======
-
-        	  // title 2
-        	  // -------
-        	  pattern: /\w+.*(?:\r?\n|\r)(?:====+|----+)/,
-            alias: 'operator'
-          },
-          {
-            // ### title 3
-            pattern: /(^\s*)###[^#].+/m,
-            lookbehind: true,
-            alias: 'operator'
-          }
-        ]
-      });
-
-      // prism highlight
-      Prism.highlightAll();
-    }
-  }
-
-  FlexDashboard.prototype = {
-    constructor: FlexDashboard,
-    init: init,
-    isMobilePhone: isMobilePhone,
-    isFillPage: isFillPage
-  };
-
-  return FlexDashboard;
-
-})();
-
-// utils
-window.FlexDashboardUtils = {
-  resizableImage: function(img) {
-    var src = img.attr('src');
-    var url = 'url("' + src + '")';
-    img.parent().css('background', url)
-                .css('background-size', 'contain')
-                .css('background-repeat', 'no-repeat')
-                .css('background-position', 'center')
-                .addClass('image-container');
-  },
-  setLocation: function(href) {
-    if (history && history.pushState) {
-      history.pushState(null, null, href);
-    } else {
-      window.location.replace(href);
-    }
-    setTimeout(function() {
-        window.scrollTo(0, 0);
-    }, 10);
-  },
-  showPage: function(href) {
-    $('ul.navbar-nav li a[href="' + href + '"]').tab('show');
-    var baseUrl = this.urlWithoutHash(window.location.href);
-    var loc = baseUrl + href;
-    this.setLocation(loc);
-  },
-  showLinkedValue: function(href) {
-    // check for a page link
-    if ($('ul.navbar-nav li a[data-toggle=tab][href="' + href + '"]').length > 0)
-      this.showPage(href);
-    else
-      window.open(href);
-  },
-  urlWithoutHash: function(url) {
-    var hashLoc = url.indexOf('#');
-    if (hashLoc != -1)
-      return url.substring(0, hashLoc);
-    else
-      return url;
-  },
-  urlHash: function(url) {
-    var hashLoc = url.indexOf('#');
-    if (hashLoc != -1)
-      return url.substring(hashLoc);
-    else
-      return "";
-  }
-};
-
-window.FlexDashboard = new FlexDashboard();
-
-// empty content
-window.FlexDashboardComponents.push({
-  find: function(container) {
-    if (container.find('p').length == 0)
-      return container;
-    else
-      return $();
-  }
-})
-
-// plot image
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.children('p')
-                    .children('img:only-child');
-  },
-
-  layout: function(title, container, element, fillPage) {
-    FlexDashboardUtils.resizableImage(element);
-  }
-});
-
-// plot image (figure style)
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.children('div.figure').children('img');
-  },
-
-  layout: function(title, container, element, fillPage) {
-    FlexDashboardUtils.resizableImage(element);
-  }
-});
-
-// htmlwidget
-window.FlexDashboardComponents.push({
-
-  init: function(dashboardContainer) {
-    // trigger "shown" after initial layout to force static htmlwidgets
-    // in runtime: shiny to be resized after the dom has been transformed
-    dashboardContainer.on('flexdashboard:layoutcomplete', function(event) {
-      setTimeout(function() {
-        dashboardContainer.trigger('shown');
-      }, 200);
-    });
-  },
-
-  find: function(container) {
-    return container.children('div[id^="htmlwidget-"],div.html-widget');
-  }
-});
-
-// gauge
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.children('div.html-widget.gauge');
-  },
-
-  flex: function(fillPage) {
-    return false;
-  },
-
-  layout: function(title, container, element, fillPage) {
-
-
-  }
-
-});
-
-// shiny output
-window.FlexDashboardComponents.push({
-  find: function(container) {
-    return container.children('div[class^="shiny-"]');
-  }
-});
-
-// bootstrap table
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    var bsTable = container.find('table.table');
-    if (bsTable.length !== 0)
-      return bsTable;
-    else
-      return container.find('tr.header').parent('thead').parent('table');
-  },
-
-  flex: function(fillPage) {
-    return fillPage;
-  },
-
-  layout: function(title, container, element, fillPage) {
-
-    // alias variables
-    var bsTable = element;
-
-    // fixup xtable generated tables with a proper thead
-    var headerRow = bsTable.find('tbody > tr:first-child > th').parent();
-    if (headerRow.length > 0) {
-      var thead = $('<thead></thead>');
-      bsTable.prepend(thead);
-      headerRow.detach().appendTo(thead);
-    }
-
-    // improve appearance
-    container.addClass('bootstrap-table');
-
-    // for fill page provide scrolling w/ sticky headers
-    if (fillPage) {
-      // force scrollbar on overflow
-      container.addClass('flowing-content-shim');
-
-      // stable table headers when scrolling
-      bsTable.stickyTableHeaders({
-        scrollableArea: container
-      });
-    }
-  }
-});
-
-// embedded shiny app
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.find('iframe.shiny-frame');
-  },
-
-  flex: function(fillPage) {
-    return fillPage;
-  },
-
-  layout: function(title, container, element, fillPage) {
-    if (fillPage) {
-      element.attr('height', '100%');
-    } else {
-      // provide default height if necessary
-      var height = element.get(0).style.height;
-      if (!height)
-        height = element.attr('height');
-      if (!height)
-        element.attr('height', 500);
-    }
-  }
-});
-
-// shiny fillRow or fillCol
-window.FlexDashboardComponents.push({
-
-  find: function(container) {
-    return container.find('.flexfill-container');
-  },
-
-  flex: function(fillPage) {
-    return fillPage;
-  },
-
-  layout: function(title, container, element, fillPage) {
-    if (fillPage)
-      element.css('height', '100%');
-    else {
-      // provide default height if necessary
-      var height = element.get(0).style.height;
-      if (height === "100%" || height === "auto" || height === "initial" ||
-          height === "inherit" || !height) {
-        element.css('height', 500);
-      }
-    }
-  }
-});
-
-// valueBox
-window.FlexDashboardComponents.push({
-
-  type: "custom",
-
-  find: function(container) {
-    if (container.find('span.value-output, .shiny-valuebox-output').length)
-      return container;
-    else
-      return $();
-  },
-
-  flex: function(fillPage) {
-    return false;
-  },
-
-  layout: function(title, container, element, fillPage) {
-
-    // alias variables
-    var chartTitle = title;
-    var valueBox = element;
-
-    // add value-box class to container
-    container.addClass('value-box');
-
-    // value paragraph
-    var value = $('<p class="value"></p>');
-
-    // if we have shiny-text-output then just move it in
-    var valueOutputSpan = [];
-    var shinyOutput = valueBox.find('.shiny-valuebox-output').detach();
-    if (shinyOutput.length) {
-      valueBox.children().remove();
-      shinyOutput.html("&mdash;");
-      value.append(shinyOutput);
-    } else {
-      // extract the value (remove leading vector index)
-      var chartValue = valueBox.text().trim();
-      chartValue = chartValue.replace("[1] ", "");
-      valueOutputSpan = valueBox.find('span.value-output').detach();
-      valueBox.children().remove();
-      value.text(chartValue);
-    }
-
-    // caption
-    var caption = $('<p class="caption"></p>');
-    caption.append(chartTitle);
-
-    // build inner div for value box and add it
-    var inner = $('<div class="inner"></div>');
-    inner.append(value);
-    inner.append(caption);
-    valueBox.append(inner);
-
-    // add icon if specified
-    var icon = $('<div class="icon"><i></i></div>');
-    valueBox.append(icon);
-    function setIcon(chartIcon) {
-      var iconLib = "";
-      var iconSplit = chartIcon.split(" ");
-      if (iconSplit.length > 1) {
-        iconLib = iconSplit[0];
-        chartIcon = iconSplit.slice(1).join(" ");
-      } else {
-        var components = chartIcon.split("-");
-        if (components.length > 1)
-          iconLib = components[0];
-      }
-      icon.children('i').attr('class', iconLib + ' ' + chartIcon);
-    }
-    var chartIcon = valueBox.attr('data-icon');
-    if (chartIcon)
-      setIcon(chartIcon);
-
-    // handle data attributes in valueOutputSpan
-    function handleValueOutput(valueOutput) {
-
-      // caption
-      var dataCaption = valueOutput.attr('data-caption');
-      if (dataCaption)
-        caption.html(dataCaption);
-
-      // icon
-      var dataIcon = valueOutput.attr('data-icon');
-      if (dataIcon)
-        setIcon(dataIcon);
-
-      // If valueBox(color=) was an accent color, this attr should
-      // be populated with the accent color and the relevant CSS comes
-      // in through HTML dependencies
-      var dataColorAccent = valueOutput.attr('data-color-accent');
-      var valueBoxClasses = "value-box-" + (["primary", "info", "danger", "warning", "success"].join(" value-box-"));
-      if (dataColorAccent) {
-        valueBox.removeClass(valueBoxClasses);
-        valueBox.addClass('value-box-' + dataColorAccent);
-      }
-
-      // If valueBox(color=) was a CSS color, these other data-color-*
-      // attrs will be populated
-      var dataColor = valueOutput.attr('data-color');
-      if (dataColor) {
-        valueBox.removeClass(valueBoxClasses);
-        valueBox.css('background-color', dataColor);
-      }
-      var dataColorText = valueOutput.attr('data-color-text');
-      if (dataColorText) {
-        valueBox.find(".inner").css('color', dataColorText);
-      }
-      var dataColorIcon = valueOutput.attr('data-color-icon');
-      if (dataColorIcon) {
-        valueBox.find(".icon").css('color', dataColorIcon);
-      }
-
-      // url
-      var dataHref = valueOutput.attr('data-href');
-      if (dataHref) {
-        valueBox.addClass('linked-value');
-        valueBox.off('click.value-box');
-        valueBox.on('click.value-box', function(e) {
-          window.FlexDashboardUtils.showLinkedValue(dataHref);
-        });
-      }
-    }
-
-    // check for a valueOutputSpan
-    if (valueOutputSpan.length > 0) {
-      handleValueOutput(valueOutputSpan);
-    }
-
-    // if we have a shinyOutput then bind a listener to handle
-    // new valueOutputSpan values
-    shinyOutput.on('shiny:value',
-      function(event) {
-        var element = $(event.target);
-        setTimeout(function() {
-          var valueOutputSpan = element.find('span.value-output');
-          if (valueOutputSpan.length > 0)
-            handleValueOutput(valueOutputSpan);
-        }, 10);
-      }
-    );
-  }
-});
-</script>
-
-<div id="dashboard-container">
-
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
+<pre class="r"><code>data(&quot;ny_noaa&quot;)
+
+ny_noaa = 
+  ny_noaa %&gt;% 
+  filter(date &gt;= &quot;2008-01-01&quot; &amp; date &lt;= &quot;2010-12-31&quot;, id %in% c(&quot;USC00302454&quot;, &quot;USC00300785&quot;, &quot;USC00308944&quot;))%&gt;% 
+  drop_na() %&gt;% 
+    mutate(
+    year = lubridate::year(date),
+    month = lubridate::month(date),
+    tmin = as.numeric(tmin),
+    tmax = as.numeric(tmax),
+    id = case_when(
+      id == &quot;USC00302454&quot; ~ &quot;East Sidney, NY&quot;,
+      id == &quot;USC00300785&quot; ~ &quot;Boonville, NY&quot;,
+      id == &quot;USC00308944&quot; ~ &quot;Wanakena Ranger School, NY&quot;)
+  )</code></pre>
 <div id="column" class="section level2" data-width="600">
 <h2>Column</h2>
-<div id="chart-a" class="section level3">
-<h3>Chart A</h3>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
-<div class="plotly html-widget html-fill-item" id="htmlwidget-5cf9f7869db4a239b2e2" style="width:576px;height:460.8px;"></div>
-<script type="application/json" data-for="htmlwidget-5cf9f7869db4a239b2e2">{"x":{"visdat":{"4e902b0fcc7":["function () ","plotlyVisDat"]},"cur_data":"4e902b0fcc7","attrs":{"4e902b0fcc7":{"x":{},"y":{},"mode":"lines","color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Monthly Average Precipitation Over Time by Station","xaxis":{"domain":[0,1],"automargin":true,"title":"Date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Monthly Average Precipitation (inches)"},"legend":{"title":{"text":"Station ID"}},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2008-01-01","2008-02-01","2008-03-01","2008-04-01","2008-05-01","2008-06-01","2008-07-01","2008-08-01","2008-09-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-05-01","2009-06-01","2009-07-01","2009-08-01","2009-09-01","2009-10-01","2009-11-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01","2010-12-01"],"y":[29.785714285714285,65.034482758620683,51.193548387096776,39.733333333333334,14.612903225806452,53.5,41.806451612903224,56.612903225806448,24.966666666666665,49.032258064516128,49.666666666666664,73,32.354838709677416,32.642857142857146,30,26.5,54.96551724137931,41.266666666666666,41.87096774193548,35.612903225806448,35.100000000000001,49.096774193548384,30.399999999999999,42.41935483870968,28.483870967741936,30.928571428571427,19.387096774193548,10,29.29032258064516,70.566666666666663,36.193548387096776,75.41935483870968,36.5,78.838709677419359,32.966666666666669,27.35483870967742],"mode":"lines","type":"scatter","name":"Boonville, NY","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"textfont":{"color":"rgba(68,1,84,1)"},"error_y":{"color":"rgba(68,1,84,1)"},"error_x":{"color":"rgba(68,1,84,1)"},"line":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2008-01-01","2008-02-01","2008-03-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-10-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01","2010-12-01"],"y":[15,50.5,122,102,94,54,41.5,20.625,4.333333333333333,43,30,30.333333333333332,14.5,14,40.863636363636367,25.433333333333334,19.677419354838708,41.833333333333336,26.193548387096776,39.548387096774192,13.166666666666666,78.645161290322577,21.600000000000001,43.833333333333336],"mode":"lines","type":"scatter","name":"East Sidney, NY","marker":{"color":"rgba(33,144,141,1)","line":{"color":"rgba(33,144,141,1)"}},"textfont":{"color":"rgba(33,144,141,1)"},"error_y":{"color":"rgba(33,144,141,1)"},"error_x":{"color":"rgba(33,144,141,1)"},"line":{"color":"rgba(33,144,141,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2008-01-01","2008-02-01","2008-03-01","2008-04-01","2008-05-01","2008-06-01","2008-07-01","2008-08-01","2008-09-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-05-01","2009-06-01","2009-07-01","2009-08-01","2009-09-01","2009-10-01","2009-11-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01"],"y":[20.419354838709676,35.96551724137931,45.516129032258064,23.066666666666666,22.741935483870968,40.56666666666667,66.677419354838705,38.741935483870968,33.033333333333331,38.75,15.633333333333333,50.677419354838712,18.214285714285715,31.964285714285715,17,16.466666666666665,40.43333333333333,27.666666666666668,65.433333333333337,43.516129032258064,24.866666666666667,45.61904761904762,13.133333333333333,23.06451612903226,23.612903225806452,12.107142857142858,18.29032258064516,21.266666666666666,19.419354838709676,47.166666666666664,36.483870967741936,45.548387096774192,31.5,62.275862068965516,23.100000000000001],"mode":"lines","type":"scatter","name":"Wanakena Ranger School, NY","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"textfont":{"color":"rgba(253,231,37,1)"},"error_y":{"color":"rgba(253,231,37,1)"},"error_x":{"color":"rgba(253,231,37,1)"},"line":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="lineplot" class="section level3">
+<h3>Lineplot</h3>
+<pre class="r"><code>  ny_noaa %&gt;% 
+  mutate(
+    year_month = floor_date(date, &quot;month&quot;)) %&gt;%
+  group_by(id, year_month) %&gt;%
+  summarize(
+    mean_prcp = mean(prcp)) %&gt;%
+  plot_ly(
+    x = ~year_month, y = ~mean_prcp, color = ~id,
+    type = &quot;scatter&quot;, mode = &quot;lines&quot;, colors = &quot;viridis&quot;
+  ) %&gt;%
+  layout(
+    title = &quot;Monthly Average Precipitation Over Time by Station&quot;,
+    xaxis = list(title = &quot;Date&quot;),
+    yaxis = list(title = &quot;Monthly Average Precipitation (inches)&quot;),
+    legend = list(title = list(text = &quot;Station ID&quot;))
+  )</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;id&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-cfb9c07368eeb80d1d4e" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-cfb9c07368eeb80d1d4e">{"x":{"visdat":{"736038ec7c36":["function () ","plotlyVisDat"]},"cur_data":"736038ec7c36","attrs":{"736038ec7c36":{"x":{},"y":{},"mode":"lines","color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Monthly Average Precipitation Over Time by Station","xaxis":{"domain":[0,1],"automargin":true,"title":"Date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Monthly Average Precipitation (inches)"},"legend":{"title":{"text":"Station ID"}},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2008-01-01","2008-02-01","2008-03-01","2008-04-01","2008-05-01","2008-06-01","2008-07-01","2008-08-01","2008-09-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-05-01","2009-06-01","2009-07-01","2009-08-01","2009-09-01","2009-10-01","2009-11-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01","2010-12-01"],"y":[29.785714285714285,65.034482758620683,51.193548387096776,39.733333333333334,14.612903225806452,53.5,41.806451612903224,56.612903225806448,24.966666666666665,49.032258064516128,49.666666666666664,73,32.354838709677416,32.642857142857146,30,26.5,54.96551724137931,41.266666666666666,41.87096774193548,35.612903225806448,35.100000000000001,49.096774193548384,30.399999999999999,42.41935483870968,28.483870967741936,30.928571428571427,19.387096774193548,10,29.29032258064516,70.566666666666663,36.193548387096776,75.41935483870968,36.5,78.838709677419359,32.966666666666669,27.35483870967742],"mode":"lines","type":"scatter","name":"Boonville, NY","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"textfont":{"color":"rgba(68,1,84,1)"},"error_y":{"color":"rgba(68,1,84,1)"},"error_x":{"color":"rgba(68,1,84,1)"},"line":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2008-01-01","2008-02-01","2008-03-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-10-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01","2010-12-01"],"y":[15,50.5,122,102,94,54,41.5,20.625,4.333333333333333,43,30,30.333333333333332,14.5,14,40.863636363636367,25.433333333333334,19.677419354838708,41.833333333333336,26.193548387096776,39.548387096774192,13.166666666666666,78.645161290322577,21.600000000000001,43.833333333333336],"mode":"lines","type":"scatter","name":"East Sidney, NY","marker":{"color":"rgba(33,144,141,1)","line":{"color":"rgba(33,144,141,1)"}},"textfont":{"color":"rgba(33,144,141,1)"},"error_y":{"color":"rgba(33,144,141,1)"},"error_x":{"color":"rgba(33,144,141,1)"},"line":{"color":"rgba(33,144,141,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2008-01-01","2008-02-01","2008-03-01","2008-04-01","2008-05-01","2008-06-01","2008-07-01","2008-08-01","2008-09-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-05-01","2009-06-01","2009-07-01","2009-08-01","2009-09-01","2009-10-01","2009-11-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01"],"y":[20.419354838709676,35.96551724137931,45.516129032258064,23.066666666666666,22.741935483870968,40.56666666666667,66.677419354838705,38.741935483870968,33.033333333333331,38.75,15.633333333333333,50.677419354838712,18.214285714285715,31.964285714285715,17,16.466666666666665,40.43333333333333,27.666666666666668,65.433333333333337,43.516129032258064,24.866666666666667,45.61904761904762,13.133333333333333,23.06451612903226,23.612903225806452,12.107142857142858,18.29032258064516,21.266666666666666,19.419354838709676,47.166666666666664,36.483870967741936,45.548387096774192,31.5,62.275862068965516,23.100000000000001],"mode":"lines","type":"scatter","name":"Wanakena Ranger School, NY","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"textfont":{"color":"rgba(253,231,37,1)"},"error_y":{"color":"rgba(253,231,37,1)"},"error_x":{"color":"rgba(253,231,37,1)"},"line":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="column-1" class="section level2" data-width="400">
 <h2>Column</h2>
-<div id="chart-b" class="section level3">
-<h3>Chart B</h3>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+<div id="boxplot" class="section level3">
+<h3>Boxplot</h3>
+<pre class="r"><code>ny_noaa %&gt;%
+  plot_ly(
+    x = ~year, y = ~tmax, color = ~id,
+    type = &quot;box&quot;, colors = &quot;viridis&quot;
+  )%&gt;%
+layout(
+    title = list(
+      text = &quot;Distribution of Maximum Temperatures from 2005-2010 for Three NY Monitors&quot;,
+      font = list(size = 12)
+    ), 
+    boxmode = &quot;group&quot;,
+xaxis = list(
+    title = &quot;Year&quot;,
+    tickvals = unique(ny_noaa$year)),
+    yaxis = list(title = &quot;Maximum Temps Degrees C&quot;)
+  )</code></pre>
+<pre><code>## Warning: &#39;layout&#39; objects don&#39;t have these attributes: &#39;boxmode&#39;
+## Valid attributes include:
+## &#39;_deprecated&#39;, &#39;activeshape&#39;, &#39;annotations&#39;, &#39;autosize&#39;, &#39;autotypenumbers&#39;, &#39;calendar&#39;, &#39;clickmode&#39;, &#39;coloraxis&#39;, &#39;colorscale&#39;, &#39;colorway&#39;, &#39;computed&#39;, &#39;datarevision&#39;, &#39;dragmode&#39;, &#39;editrevision&#39;, &#39;editType&#39;, &#39;font&#39;, &#39;geo&#39;, &#39;grid&#39;, &#39;height&#39;, &#39;hidesources&#39;, &#39;hoverdistance&#39;, &#39;hoverlabel&#39;, &#39;hovermode&#39;, &#39;images&#39;, &#39;legend&#39;, &#39;mapbox&#39;, &#39;margin&#39;, &#39;meta&#39;, &#39;metasrc&#39;, &#39;modebar&#39;, &#39;newshape&#39;, &#39;paper_bgcolor&#39;, &#39;plot_bgcolor&#39;, &#39;polar&#39;, &#39;scene&#39;, &#39;selectdirection&#39;, &#39;selectionrevision&#39;, &#39;separators&#39;, &#39;shapes&#39;, &#39;showlegend&#39;, &#39;sliders&#39;, &#39;smith&#39;, &#39;spikedistance&#39;, &#39;template&#39;, &#39;ternary&#39;, &#39;title&#39;, &#39;transition&#39;, &#39;uirevision&#39;, &#39;uniformtext&#39;, &#39;updatemenus&#39;, &#39;width&#39;, &#39;xaxis&#39;, &#39;yaxis&#39;, &#39;barmode&#39;, &#39;bargap&#39;, &#39;mapType&#39;</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-b042830cb01ca6cf3bda" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-b042830cb01ca6cf3bda">{"x":{"visdat":{"7360eb91383":["function () ","plotlyVisDat"]},"cur_data":"7360eb91383","attrs":{"7360eb91383":{"x":{},"y":{},"color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":{"text":"Distribution of Maximum Temperatures from 2005-2010 for Three NY Monitors","font":{"size":12}},"boxmode":"group","xaxis":{"domain":[0,1],"automargin":true,"title":"Year","tickvals":[2008,2009,2010]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Maximum Temps Degrees C"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(68,1,84,0.5)","x":[2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010],"y":[-22,-22,-144,-122,-61,0,56,94,39,17,17,-22,-39,-28,-22,0,-50,-128,-94,-39,-56,-78,-61,-67,-33,-11,28,17,-44,0,-33,-22,17,50,-11,-22,-39,-17,-28,-117,-39,-6,-39,-33,-83,78,78,-44,-78,-61,-67,-39,-11,17,-11,-78,-106,-44,-6,-11,83,28,17,28,61,6,-56,-28,-6,0,6,61,28,6,11,22,28,17,-39,0,-17,-6,22,28,39,-6,-33,-11,83,133,0,72,28,78,106,117,144,172,117,106,111,33,78,106,156,217,244,267,222,228,233,217,189,217,222,200,78,72,72,128,78,156,100,167,167,189,122,167,172,183,161,211,217,172,128,178,106,72,139,78,94,139,172,206,228,189,150,194,206,211,150,211,200,200,217,289,289,283,311,283,239,217,267,239,256,222,172,150,172,189,239,233,228,206,239,222,239,250,250,222,222,239,206,217,228,256,278,283,239,194,189,272,217,228,228,267,250,278,272,228,233,222,194,217,244,250,239,228,244,222,244,250,206,217,239,250,244,217,189,217,194,194,206,200,222,222,217,233,261,172,189,233,261,239,256,189,194,228,239,161,250,228,239,267,267,250,289,206,206,211,172,167,194,167,228,278,161,161,194,156,161,189,100,178,194,217,211,150,178,189,111,156,150,100,100,111,117,111,139,167,178,172,183,200,206,211,133,133,94,94,106,106,67,39,94,117,117,117,83,11,-17,22,133,67,56,83,128,150,189,167,117,56,11,6,28,78,128,94,-6,-17,-50,-44,-44,-61,-72,-56,0,0,-17,0,0,-6,17,39,0,6,11,-39,-61,-44,-78,67,67,-11,-50,-44,44,83,-50,-22,-39,-94,-78,-50,-117,-61,56,0,0,72,83,-11,-33,-111,-94,-50,-67,-33,-22,-33,-6,-56,-94,-100,-83,-67,-28,-156,-122,-156,-122,-72,-72,-89,-89,-56,17,-111,-100,-89,-56,-44,-56,-33,-78,22,0,-39,-89,-122,-72,56,22,0,39,72,39,-61,-22,-28,-22,-11,-6,-6,-72,-28,-22,-83,-50,-6,56,61,-78,-17,-128,-83,-33,22,89,56,50,11,6,72,-50,-28,44,83,100,111,72,72,11,39,11,-39,44,89,61,106,161,83,11,72,44,150,117,-6,22,39,-33,-6,78,122,67,22,78,144,167,150,156,128,150,78,128,106,44,206,272,217,300,250,161,150,194,128,156,178,139,156,133,206,222,67,144,167,189,139,194,194,89,106,183,233,311,228,172,150,144,172,144,167,111,139,167,183,189,200,222,150,211,239,189,206,222,222,217,183,206,194,144,200,178,228,239,244,261,283,211,200,239,233,194,228,178,189,156,217,206,194,183,217,239,222,183,194,178,222,239,211,200,194,228,206,239,239,206,244,233,228,261,244,233,183,244,206,222,256,211,211,211,206,200,250,256,256,256,267,283,283,294,283,244,267,239,256,239,233,228,206,189,194,167,194,178,200,222,239,233,222,200,217,239,228,189,200,206,194,211,189,178,156,167,156,194,217,178,239,189,156,139,133,133,122,67,61,106,189,178,117,133,89,133,100,117,89,61,67,56,28,78,89,100,100,133,139,128,83,128,94,128,133,89,89,117,139,94,94,89,22,50,0,78,150,183,94,83,94,156,111,128,67,61,100,122,61,56,39,50,83,72,83,22,39,56,22,17,89,94,22,-11,-33,-39,0,11,-33,-94,-61,-6,17,17,-72,-150,-94,-94,-61,-61,-83,-100,-28,0,28,28,-22,-144,-67,-39,-11,-100,-128,-100,-83,-83,-61,-100,-133,-78,-78,-83,-56,6,0,-11,17,0,-22,-11,6,33,6,78,83,-22,-39,-50,-139,-150,-83,-67,-61,-6,-33,-44,-83,-83,-67,-44,-22,-39,-33,-72,-44,-44,-28,-28,-22,-11,-17,-44,33,-11,17,0,44,11,50,17,56,22,28,22,78,61,61,67,117,117,83,50,72,89,122,133,139,133,111,128,50,56,83,61,-22,28,50,78,28,78,200,261,261,156,194,156,222,244,28,78,128,117,133,150,156,144,39,94,133,172,183,100,122,161,139,144,39,111,133,172,267,244,244,161,233,144,156,133,6,94,106,89,139,206,128,194,217,206,183,239,267,256,233,261,289,317,278,228,244,244,289,222,250,211,228,233,122,178,178,122,167,217,161,206,228,228,172,200,244,267,256,244,211,244,228,228,206,261,239,178,167,172,222,261,272,306,317,311,311,256,250,272,278,261,278,272,256,272,239,250,256,256,244,206,278,233,244,267,256,233,206,211,239,250,272,278,261,206,211,250,272,261,267,228,244,239,189,244,239,217,250,217,194,172,167,222,189,183,206,239,267,289,289,289,294,283,178,139,189,267,167,133,167,206,128,189,156,133,144,133,167,194,161,189,194,200,278,167,150,167,222,156,178,144,133,139,89,94,117,156,189,139,161,150,122,144,122,61,106,139,94,94,128,72,50,89,106,161,200,178,144,56,67,22,6,61,78,39,22,0,44,6,33,89,128,150,161,156,56,106,78,33,17,56,33,89,106,28,6,6,-22,-6,39,100,111,-17,-11,-28,-61,-61,-67,-61,-106,-33,0,56,-17,-94,-83,-67,-56,-28,-22,-22,-72,-50,-67,-67,-78,-89,-89,-33,-39,11],"type":"box","name":"Boonville, NY","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"line":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(33,144,141,0.5)","x":[2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010],"y":[-17,22,111,0,67,100,11,6,-28,-11,-11,-6,-44,-22,-28,11,6,-83,-78,-50,22,-6,-17,22,28,22,-44,11,17,50,-67,-17,61,94,39,11,11,50,-6,17,-106,-78,-56,22,-33,-33,-11,-22,-17,-50,-72,-44,-11,-6,28,33,17,39,33,144,89,56,67,67,161,161,178,189,194,206,139,133,117,128,22,78,83,128,33,83,250,267,261,200,250,233,283,289,78,128,172,133,144,178,189,183,72,100,139,189,194,178,156,200,111,106,67,117,167,244,300,289,233,250,256,200,183,200,44,117,122,72,172,261,178,206,233,233,161,283,294,250,239,283,311,333,322,272,278,272,322,250,289,250,272,283,256,206,194,144,222,250,289,228,250,256,211,211,283,289,289,272,272,289,278,272,239,294,267,239,206,206,250,306,317,344,350,339,350,311,278,300,306,278,294,311,306,317,283,300,278,294,272,250,311,244,267,289,300,272,250,250,272,272,278,322,289,250,250,289,306,294,300,222,239,256,217,289,272,278,283,250,256,206,194,206,206,228,222,267,300,311,311,317,317,311,178,194,233,294,211,139,172,222,156,200,189,156,189,189,217,217,183,217,256,239,311,239,189,211,244,211,239,167,156,156,89,122,167,172,211,161,194,194,156,172,128,72,122,161,111,122,139,94,56,150,178,206,217,200,183,72,111,61,22,83,106,56,56,39,61,67,61,133,139,150,156,156,106,139,106,78,44,89,67,139,144,6,56,50,28,44,61,133,156,0,11,-11,-33,0,-94,-67,-61,-72,-22],"type":"box","name":"East Sidney, NY","marker":{"color":"rgba(33,144,141,1)","line":{"color":"rgba(33,144,141,1)"}},"line":{"color":"rgba(33,144,141,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(253,231,37,0.5)","x":[2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010],"y":[-22,-61,-144,-28,17,44,106,106,150,111,83,39,11,11,-11,-39,-44,-22,17,-22,-94,-44,-28,-61,-72,-61,-28,-22,28,67,-50,-61,-11,-22,0,61,61,-11,-50,-11,11,6,-122,-94,-11,-11,-6,-61,78,-28,-11,-61,-72,-39,-44,17,0,0,-33,-139,-50,0,6,94,67,-22,22,22,-11,-61,-44,6,-6,11,89,33,0,-17,61,39,28,-6,-33,-11,28,50,56,28,-11,-39,78,133,139,11,94,94,94,128,133,167,194,183,67,128,17,78,111,172,228,239,294,267,256,250,217,239,261,189,133,89,78,78,128,117,194,194,194,211,189,194,189,194,206,172,256,256,167,200,156,256,156,94,144,150,183,200,239,167,133,189,211,217,150,256,233,178,261,289,289,294,300,306,239,222,311,317,272,278,261,256,189,211,256,256,233,228,261,256,233,256,261,278,244,250,261,261,239,261,289,300,306,311,228,267,294,228,239,261,267,289,289,278,239,239,256,244,239,267,256,261,244,244,256,256,256,250,261,250,283,256,244,183,228,222,233,222,217,233,222,233,233,272,161,200,261,294,272,194,206,206,261,267,206,239,244,256,278,300,256,300,222,189,222,172,172,211,189,244,294,278,172,206,144,194,222,167,172,194,233,250,178,189,167,122,178,139,100,117,139,189,189,172,183,222,222,228,161,150,94,100,111,83,94,39,89,150,128,150,100,50,0,28,139,78,39,56,156,167,178,150,122,50,22,0,22,78,139,117,106,-22,-33,-61,-33,-78,-94,-61,11,28,6,-11,6,-11,11,56,17,22,22,-44,-50,-33,-33,56,83,-50,-39,-122,22,94,-6,11,-28,-72,-111,-39,-111,0,67,17,-28,89,139,-11,-11,0,-33,-50,-61,-6,-11,-44,17,-22,-33,-11,-139,-128,-128,-111,-50,-17,-67,-44,-17,39,0,-61,-72,-33,-33,-50,-28,-94,17,17,-78,-139,-139,-44,61,50,-28,83,89,83,-61,-44,-33,-39,-11,11,11,-67,-28,-11,-61,-83,17,56,83,-72,-22,-122,-111,6,22,89,67,50,0,28,78,-72,-22,50,100,106,128,89,100,0,50,0,-50,28,117,89,106,172,106,22,72,61,150,183,28,50,56,0,56,111,78,56,-22,78,128,156,150,172,89,178,106,128,72,233,278,278,150,317,261,200,167,189,133,172,178,194,178,144,222,200,139,161,217,200,183,206,106,122,206,256,272,194,211,206,156,200,139,217,172,150,172,139,161,183,194,228,211,228,194,250,194,239,228,217,250,200,250,239,172,183,200,244,239,267,289,311,256,228,267,244,239,250,239,228,222,228,200,211,239,272,256,200,194,189,233,267,233,211,217,250,244,239,250,222,272,267,239,289,289,228,233,261,228,239,294,217,217,194,228,217,272,267,278,283,289,294,300,311,294,256,267,261,256,267,239,250,200,194,228,211,217,178,217,239,239,256,222,222,228,256,239,228,228,222,217,211,172,178,206,156,167,222,244,233,239,200,144,194,156,189,122,72,56,67,50,128,122,100,144,133,78,78,28,17,17,56,72,78,150,89,139,156,167,111,122,83,28,72,33,122,156,206,133,89,94,167,89,78,78,72,144,156,78,72,78,122,117,106,78,72,67,78,50,111,111,94,17,22,0,-11,33,22,-22,-11,28,17,17,17,-67,-150,-83,-39,-50,-78,-50,-39,17,39,50,33,-17,-50,-11,17,0,-94,-111,-78,-72,-56,-56,-106,-33,-28,-44,-83,-11,44,50,28,17,17,11,-11,39,17,61,106,100,0,-11,-89,-156,-50,-50,-72,-28,-28,-56,-39,-67,-78,-28,-39,-22,-50,-61,-61,-11,-28,11,-6,-17,0,6,22,11,17,17,6,33,17,44,33,22,17,11,44,44,89,78,111,139,128,89,67,83,139,139,144,150,144,89,39,39,89,122,56,50,72,61,61,50,233,294,294,244,211,161,200,200,128,78,117,111,106,150,150,156,139,100,144,144,183,189,128,178,167,200,150,94,150,189,272,272,211,183,261,183,161,139,122,94,111,139,150,161,183,133,206,222,222,228,239,250,294,261,278,289,300,256,256,239,244,311,228,272,211,239,239,189,189,183,167,178,222,189,250,228,222,222,228,261,289,267,244,250,250,244,233,200,244,256,244,172,189,233,261,283,322,328,328,333,306,272,283,317,278,272,300,261,294,250,261,267,278,250,239,283,244,272,272,283,228,206,222,256,256,272,278,272,256,189,239,278,278,267,228,278,272,228,267,250,217,272,211,217,189,189,217,200,206,189,250,278,289,306,306,311,306,244,150,200,267,200,144,167,217,161,161,139,122,139,156,189,189,156,178,172,189,278,222,167,167,239,200,256,150,128,117,117,139,133,172,178,122,161,144,111,150,144,78,122,144,106,100,150,128,56,89,194,189,217,194,172,56,67,56,56,56,39,22,61,50,67,78,111,161,156,156,100,122,106,72,33,72,28,128,150,89,39,56,33,33,67],"type":"box","name":"Wanakena Ranger School, NY","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"line":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="histogram" class="section level3">
+<h3>Histogram</h3>
+<pre class="r"><code>ny_noaa %&gt;% 
+  filter(year &gt;= 2009) %&gt;% 
+  plot_ly(
+    x = ~tmin, color = ~id,
+  type = &quot;histogram&quot;, 
+  mode = &quot;markers&quot;, 
+  alpha = 0.5, 
+  colors = &quot;viridis&quot;
+  )%&gt;%
+  layout(
+    title = list(
+      text = &quot;Frequency of Minimum Temperature in 2009 and 2010 for three NY Monitors&quot;,
+      font = list(size = 12) 
+    ),
+    xaxis = list(
+      title = &quot;Minimum Temps in Degrees C&quot;, 
+      range = c(min(ny_noaa$tmin), 30)
+    ),
+    yaxis = list(
+      title = &quot;Frequency&quot;)
+  )</code></pre>
+<pre><code>## Warning: &#39;histogram&#39; objects don&#39;t have these attributes: &#39;mode&#39;
+## Valid attributes include:
+## &#39;_deprecated&#39;, &#39;alignmentgroup&#39;, &#39;autobinx&#39;, &#39;autobiny&#39;, &#39;bingroup&#39;, &#39;cliponaxis&#39;, &#39;constraintext&#39;, &#39;cumulative&#39;, &#39;customdata&#39;, &#39;customdatasrc&#39;, &#39;error_x&#39;, &#39;error_y&#39;, &#39;histfunc&#39;, &#39;histnorm&#39;, &#39;hoverinfo&#39;, &#39;hoverinfosrc&#39;, &#39;hoverlabel&#39;, &#39;hovertemplate&#39;, &#39;hovertemplatesrc&#39;, &#39;hovertext&#39;, &#39;hovertextsrc&#39;, &#39;ids&#39;, &#39;idssrc&#39;, &#39;insidetextanchor&#39;, &#39;insidetextfont&#39;, &#39;legendgroup&#39;, &#39;legendgrouptitle&#39;, &#39;legendrank&#39;, &#39;marker&#39;, &#39;meta&#39;, &#39;metasrc&#39;, &#39;name&#39;, &#39;nbinsx&#39;, &#39;nbinsy&#39;, &#39;offsetgroup&#39;, &#39;opacity&#39;, &#39;orientation&#39;, &#39;outsidetextfont&#39;, &#39;selected&#39;, &#39;selectedpoints&#39;, &#39;showlegend&#39;, &#39;stream&#39;, &#39;text&#39;, &#39;textangle&#39;, &#39;textfont&#39;, &#39;textposition&#39;, &#39;textsrc&#39;, &#39;texttemplate&#39;, &#39;transforms&#39;, &#39;type&#39;, &#39;uid&#39;, &#39;uirevision&#39;, &#39;unselected&#39;, &#39;visible&#39;, &#39;x&#39;, &#39;xaxis&#39;, &#39;xbins&#39;, &#39;xcalendar&#39;, &#39;xhoverformat&#39;, &#39;xsrc&#39;, &#39;y&#39;, &#39;yaxis&#39;, &#39;ybins&#39;, &#39;ycalendar&#39;, &#39;yhoverformat&#39;, &#39;ysrc&#39;, &#39;key&#39;, &#39;set&#39;, &#39;frame&#39;, &#39;transforms&#39;, &#39;_isNestedKey&#39;, &#39;_isSimpleKey&#39;, &#39;_isGraticule&#39;, &#39;_bbox&#39;
+## Warning: &#39;histogram&#39; objects don&#39;t have these attributes: &#39;mode&#39;
+## Valid attributes include:
+## &#39;_deprecated&#39;, &#39;alignmentgroup&#39;, &#39;autobinx&#39;, &#39;autobiny&#39;, &#39;bingroup&#39;, &#39;cliponaxis&#39;, &#39;constraintext&#39;, &#39;cumulative&#39;, &#39;customdata&#39;, &#39;customdatasrc&#39;, &#39;error_x&#39;, &#39;error_y&#39;, &#39;histfunc&#39;, &#39;histnorm&#39;, &#39;hoverinfo&#39;, &#39;hoverinfosrc&#39;, &#39;hoverlabel&#39;, &#39;hovertemplate&#39;, &#39;hovertemplatesrc&#39;, &#39;hovertext&#39;, &#39;hovertextsrc&#39;, &#39;ids&#39;, &#39;idssrc&#39;, &#39;insidetextanchor&#39;, &#39;insidetextfont&#39;, &#39;legendgroup&#39;, &#39;legendgrouptitle&#39;, &#39;legendrank&#39;, &#39;marker&#39;, &#39;meta&#39;, &#39;metasrc&#39;, &#39;name&#39;, &#39;nbinsx&#39;, &#39;nbinsy&#39;, &#39;offsetgroup&#39;, &#39;opacity&#39;, &#39;orientation&#39;, &#39;outsidetextfont&#39;, &#39;selected&#39;, &#39;selectedpoints&#39;, &#39;showlegend&#39;, &#39;stream&#39;, &#39;text&#39;, &#39;textangle&#39;, &#39;textfont&#39;, &#39;textposition&#39;, &#39;textsrc&#39;, &#39;texttemplate&#39;, &#39;transforms&#39;, &#39;type&#39;, &#39;uid&#39;, &#39;uirevision&#39;, &#39;unselected&#39;, &#39;visible&#39;, &#39;x&#39;, &#39;xaxis&#39;, &#39;xbins&#39;, &#39;xcalendar&#39;, &#39;xhoverformat&#39;, &#39;xsrc&#39;, &#39;y&#39;, &#39;yaxis&#39;, &#39;ybins&#39;, &#39;ycalendar&#39;, &#39;yhoverformat&#39;, &#39;ysrc&#39;, &#39;key&#39;, &#39;set&#39;, &#39;frame&#39;, &#39;transforms&#39;, &#39;_isNestedKey&#39;, &#39;_isSimpleKey&#39;, &#39;_isGraticule&#39;, &#39;_bbox&#39;
+## Warning: &#39;histogram&#39; objects don&#39;t have these attributes: &#39;mode&#39;
+## Valid attributes include:
+## &#39;_deprecated&#39;, &#39;alignmentgroup&#39;, &#39;autobinx&#39;, &#39;autobiny&#39;, &#39;bingroup&#39;, &#39;cliponaxis&#39;, &#39;constraintext&#39;, &#39;cumulative&#39;, &#39;customdata&#39;, &#39;customdatasrc&#39;, &#39;error_x&#39;, &#39;error_y&#39;, &#39;histfunc&#39;, &#39;histnorm&#39;, &#39;hoverinfo&#39;, &#39;hoverinfosrc&#39;, &#39;hoverlabel&#39;, &#39;hovertemplate&#39;, &#39;hovertemplatesrc&#39;, &#39;hovertext&#39;, &#39;hovertextsrc&#39;, &#39;ids&#39;, &#39;idssrc&#39;, &#39;insidetextanchor&#39;, &#39;insidetextfont&#39;, &#39;legendgroup&#39;, &#39;legendgrouptitle&#39;, &#39;legendrank&#39;, &#39;marker&#39;, &#39;meta&#39;, &#39;metasrc&#39;, &#39;name&#39;, &#39;nbinsx&#39;, &#39;nbinsy&#39;, &#39;offsetgroup&#39;, &#39;opacity&#39;, &#39;orientation&#39;, &#39;outsidetextfont&#39;, &#39;selected&#39;, &#39;selectedpoints&#39;, &#39;showlegend&#39;, &#39;stream&#39;, &#39;text&#39;, &#39;textangle&#39;, &#39;textfont&#39;, &#39;textposition&#39;, &#39;textsrc&#39;, &#39;texttemplate&#39;, &#39;transforms&#39;, &#39;type&#39;, &#39;uid&#39;, &#39;uirevision&#39;, &#39;unselected&#39;, &#39;visible&#39;, &#39;x&#39;, &#39;xaxis&#39;, &#39;xbins&#39;, &#39;xcalendar&#39;, &#39;xhoverformat&#39;, &#39;xsrc&#39;, &#39;y&#39;, &#39;yaxis&#39;, &#39;ybins&#39;, &#39;ycalendar&#39;, &#39;yhoverformat&#39;, &#39;ysrc&#39;, &#39;key&#39;, &#39;set&#39;, &#39;frame&#39;, &#39;transforms&#39;, &#39;_isNestedKey&#39;, &#39;_isSimpleKey&#39;, &#39;_isGraticule&#39;, &#39;_bbox&#39;</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-2689193bcf67545df4a7" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-2689193bcf67545df4a7">{"x":{"visdat":{"736040785fd9":["function () ","plotlyVisDat"]},"cur_data":"736040785fd9","attrs":{"736040785fd9":{"x":{},"mode":"markers","color":{},"colors":"viridis","alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":{"text":"Frequency of Minimum Temperature in 2009 and 2010 for three NY Monitors","font":{"size":12}},"xaxis":{"domain":[0,1],"automargin":true,"title":"Minimum Temps in Degrees C","range":[-311,30]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Frequency"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-211,-217,-106,-194,-189,-100,-100,-56,-200,-211,-217,-167,-128,-250,-267,-244,-222,-222,-122,-139,-206,-161,-89,-122,-211,-178,-156,-133,-94,-100,-144,-161,-78,-122,-206,-239,-239,-150,-78,-78,-83,-28,28,-122,-161,-161,-156,-144,-128,-50,-122,-122,-111,-100,-178,-178,-128,-22,-167,-183,-144,-200,-200,-178,-111,0,0,0,-50,-44,-100,-144,-144,-72,-56,-39,-6,6,-89,-106,-106,-117,-117,-111,-44,0,0,44,-11,-28,-28,17,22,-17,-17,-17,-39,-56,-50,-17,-28,-61,-61,-56,-28,-17,-6,22,6,11,17,39,0,-17,-6,117,94,133,-6,17,72,33,33,50,44,67,67,78,94,39,-11,-6,17,44,50,61,11,0,6,22,111,128,94,0,39,72,122,83,78,-6,17,61,44,56,89,89,83,83,100,100,139,106,94,94,83,100,83,100,111,122,139,117,128,144,150,128,122,139,128,128,133,139,122,78,78,111,106,89,94,133,94,83,78,89,111,133,144,111,106,128,139,139,150,139,144,144,144,156,133,133,133,139,100,111,156,106,100,89,106,150,172,156,161,150,156,156,167,189,178,128,150,172,172,156,128,144,61,61,89,128,72,67,72,72,94,94,72,72,117,122,89,56,56,117,72,72,67,72,94,11,11,22,72,133,128,61,28,61,94,67,17,6,6,33,56,67,50,56,28,28,56,6,-33,-22,-11,-50,-39,-39,-22,-33,-33,61,72,-6,-11,33,-6,0,44,56,61,78,17,-28,-22,-44,-39,-28,-50,-28,44,39,-28,-44,-44,-39,83,-11,-44,-44,-33,28,33,33,-11,0,44,22,-6,-6,-6,0,-67,-44,-22,-22,-44,-67,-67,-67,-83,-44,-122,-117,-106,-78,-11,-122,-194,-239,-233,-150,-144,-189,-189,-161,-117,-89,-11,-28,-194,-200,-167,-67,-111,-178,-178,-156,-150,-122,-128,-172,-228,-178,-111,-189,-133,-61,-28,-50,-33,-33,-44,-83,-111,-144,-144,-33,-33,-50,-94,-228,-272,-267,-178,-133,-100,-161,-167,-161,-178,-167,-161,-156,-144,-167,-178,-178,-83,-106,-83,-56,-61,-50,-100,-100,-83,-22,-22,-22,-28,-28,-28,-33,-33,-67,-78,-111,-94,-39,-56,-50,-50,28,22,17,-6,-28,-22,-11,6,33,-22,-11,6,-22,-22,-94,-111,-106,-28,-11,-11,6,6,100,44,44,56,72,100,28,-22,-11,-17,-22,-17,-11,39,0,-6,-6,11,17,33,-22,-17,0,61,17,-11,0,11,61,139,167,89,56,72,11,22,-28,-28,-28,-11,-6,11,50,39,44,61,78,83,100,117,133,128,144,150,150,100,111,100,100,122,106,122,139,144,100,61,61,61,83,89,94,128,139,83,100,111,106,122,167,133,122,144,167,111,117,128,156,139,61,78,83,94,139,161,189,183,194,206,172,139,144,172,178,172,172,167,156,161,156,150,144,150,150,167,122,128,144,156,122,72,94,122,161,172,194,144,117,83,172,172,183,161,150,150,161,161,133,133,133,117,100,122,128,100,106,133,83,83,111,133,144,172,178,183,133,83,78,83,139,106,100,72,72,111,100,33,39,61,44,61,67,44,61,94,106,117,72,83,106,122,100,106,28,17,17,33,61,72,67,56,0,0,22,-6,-6,33,39,6,0,-17,6,17,-44,-33,22,50,106,111,89,33,0,-11,-33,-50,-50,-44,11,-22,-50,-39,-33,-11,-33,-33,-6,11,28,0,22,-6,-33,-39,-78,-78,33,-33,-89,-78,-44,-117,-56,-56,22,-50,-50,-78,-89,-100,-100,-139,-172,-183,-133,-39,-17,-150,-161,-150,-117,-111,-139,-139,-94,-94,-83,-89,-122,-133,-161,-167,-94,-72,-83],"mode":"markers","type":"histogram","name":"Boonville, NY","marker":{"color":"rgba(68,1,84,0.5)","line":{"color":"rgba(68,1,84,1)"}},"textfont":{"color":"rgba(68,1,84,0.5)"},"error_y":{"color":"rgba(68,1,84,0.5)"},"error_x":{"color":"rgba(68,1,84,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-144,-83,-178,-144,-139,-217,-178,-178,-78,-144,-189,-67,-111,-111,-100,-61,-78,-133,-172,-172,-150,-11,-11,-39,-39,-67,-44,-94,-128,-172,-106,-33,-128,-128,-122,-150,-128,-183,-94,-94,-61,-44,-11,-22,-22,-22,-11,17,17,17,39,-50,-61,-67,-44,-39,-28,22,22,0,-61,-61,-106,-72,6,28,22,17,22,33,44,-11,6,56,72,50,0,17,-39,-39,-44,-44,-44,39,11,-28,-17,-11,0,-44,-50,-6,78,50,-33,-39,-17,50,133,133,61,33,44,0,6,0,-28,-50,-11,0,6,72,50,17,28,28,94,78,83,139,100,111,111,122,100,122,94,117,117,100,106,150,150,150,50,44,56,67,72,78,183,167,89,100,122,100,100,172,117,117,117,206,144,128,139,139,156,44,67,56,67,111,111,172,178,167,183,183,128,133,144,189,183,183,156,167,156,172,172,122,150,161,211,111,106,117,150,100,72,100,156,167,200,206,150,100,89,172,178,183,161,156,133,167,178,133,133,133,133,83,122,167,139,144,144,78,72,100,106,106,144,150,156,117,106,61,122,150,122,117,78,83,133,94,33,44,83,61,106,56,28,22,94,117,178,78,78,111,89,94,128,33,17,44,67,83,78,17,22,-22,-11,11,-22,-11,-22,61,-17,-6,-28,-22,-17,6,-6,28,56,61,133,67,67,0,0,-11,-44,-50,-56,33,6,-50,-44,0,17,-56,-78,-72,-50,56,39,33,33,-17,-33,-56,-56,67,6,-72,-17,-44,-61,-56,-56,61,-39,-50,-50,-61,-61,-111,-122,-117,-122,-128,-72],"mode":"markers","type":"histogram","name":"East Sidney, NY","marker":{"color":"rgba(33,144,141,0.5)","line":{"color":"rgba(33,144,141,1)"}},"textfont":{"color":"rgba(33,144,141,0.5)"},"error_y":{"color":"rgba(33,144,141,0.5)"},"error_x":{"color":"rgba(33,144,141,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-222,-250,-239,-206,-222,-172,-122,-72,-133,-106,-261,-256,-278,-222,-172,-122,-167,-250,-228,-61,-33,-194,-261,-228,-167,-100,-106,-94,-172,-178,-150,-161,-200,-222,-172,-100,-39,-56,-50,50,-50,-111,-133,-111,-150,-128,-56,-111,-133,-100,-61,-133,-150,-122,0,-106,-172,-183,-150,-189,-183,-183,6,17,-28,-44,-72,-72,-144,-172,-133,-89,-72,-61,-28,-94,-111,-150,-78,-128,-172,-122,-39,-22,-39,17,-11,-22,-33,-11,-11,-22,-22,-44,-50,-33,-44,-39,-39,-61,-50,-44,-33,-28,-133,17,11,17,33,0,-22,111,100,50,72,17,-17,83,83,50,50,78,50,94,100,111,89,17,17,33,117,78,100,44,33,-17,83,150,117,78,94,67,22,106,89,128,83,0,78,28,56,22,72,117,44,67,111,117,128,139,122,83,122,111,139,122,133,117,67,144,128,128,178,161,156,94,128,139,139,139,178,122,122,133,133,100,139,172,122,94,122,100,122,156,156,139,117,144,150,161,133,156,161,128,167,200,167,161,161,178,122,172,117,100,50,106,111,183,178,139,128,133,144,150,183,189,128,167,150,183,194,139,133,39,61,106,89,78,33,61,72,72,106,117,89,78,128,117,61,89,128,44,117,72,39,39,6,-11,22,72,156,100,61,61,50,106,11,17,6,-11,-39,117,-33,44,83,44,44,-11,0,6,-67,-33,-56,-61,-67,50,-11,-56,67,11,11,0,-39,-33,-22,-28,-22,50,44,22,-22,-17,-39,-6,6,-61,-67,6,22,56,0,-39,0,61,56,17,28,-11,-39,-67,-33,33,-6,-28,-39,-28,-56,-56,-61,-89,-94,-78,-33,-61,-128,-217,-289,-211,-133,-117,-167,-239,-150,-89,-56,-6,-61,-189,-206,-161,-39,-156,-161,-133,-122,-106,-111,-128,-222,-228,-139,-111,-222,-172,-111,6,-6,-6,-33,-56,-100,-194,-222,-83,-72,-28,-44,-161,-222,-311,-194,-167,-139,-133,-206,-122,-167,-167,-128,-239,-133,-94,-117,-244,-122,-72,-150,-78,-39,-56,-44,-33,-83,-122,-56,-6,-6,0,-11,0,-22,-44,-50,-72,-83,-22,17,-22,-28,44,50,44,6,0,-39,44,0,-22,11,-6,6,-6,-11,-11,-94,-94,-50,28,0,6,28,122,144,78,67,83,106,67,17,6,39,-6,-33,0,56,78,22,11,17,11,39,-6,-11,11,28,-39,0,-11,17,39,100,156,139,100,61,89,11,28,6,-6,-11,6,28,0,78,78,44,50,111,100,89,106,156,106,150,156,183,150,128,139,117,117,178,150,156,128,117,78,89,94,83,106,94,139,139,111,89,139,128,117,178,183,144,150,178,89,139,150,156,183,122,94,111,117,122,189,206,172,189,217,200,183,161,167,128,150,189,206,211,183,150,133,139,133,178,211,167,178,178,128,144,128,39,44,128,178,189,189,72,44,67,117,156,117,106,78,128,167,139,106,72,44,44,39,139,89,111,122,133,78,56,117,72,150,139,150,128,106,89,56,122,117,106,50,17,56,89,67,39,22,17,17,17,0,0,78,17,100,117,106,100,128,78,94,94,28,17,22,78,78,83,83,11,0,28,11,0,61,67,44,22,0,-33,72,6,-17,17,-6,100,94,78,78,-17,-17,-56,-100,0,6,-17,-39,-39,6,-11,-44,-6,-11,33,28,28,39,-6,-33,-50,-72,-22,22,-61,-78,-22,-144,-100,-22],"mode":"markers","type":"histogram","name":"Wanakena Ranger School, NY","marker":{"color":"rgba(253,231,37,0.5)","line":{"color":"rgba(253,231,37,1)"}},"textfont":{"color":"rgba(253,231,37,0.5)"},"error_y":{"color":"rgba(253,231,37,0.5)"},"error_x":{"color":"rgba(253,231,37,0.5)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
-</div>
-<div class="plotly html-widget html-fill-item" id="htmlwidget-b823cd1d803e12d67d78" style="width:576px;height:460.8px;"></div>
-<script type="application/json" data-for="htmlwidget-b823cd1d803e12d67d78">{"x":{"visdat":{"4e902ea060fb":["function () ","plotlyVisDat"]},"cur_data":"4e902ea060fb","attrs":{"4e902ea060fb":{"x":{},"y":{},"color":{},"colors":"viridis","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Distribution of Maximum Temperature from 2005-2010 for three NY Monitors","boxmode":"group","xaxis":{"domain":[0,1],"automargin":true,"title":"Year","tickvals":[2008,2009,2010]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Maximum Temperature"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(68,1,84,0.5)","x":[2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010],"y":[-22,-22,-144,-122,-61,0,56,94,39,17,17,-22,-39,-28,-22,0,-50,-128,-94,-39,-56,-78,-61,-67,-33,-11,28,17,-44,0,-33,-22,17,50,-11,-22,-39,-17,-28,-117,-39,-6,-39,-33,-83,78,78,-44,-78,-61,-67,-39,-11,17,-11,-78,-106,-44,-6,-11,83,28,17,28,61,6,-56,-28,-6,0,6,61,28,6,11,22,28,17,-39,0,-17,-6,22,28,39,-6,-33,-11,83,133,0,72,28,78,106,117,144,172,117,106,111,33,78,106,156,217,244,267,222,228,233,217,189,217,222,200,78,72,72,128,78,156,100,167,167,189,122,167,172,183,161,211,217,172,128,178,106,72,139,78,94,139,172,206,228,189,150,194,206,211,150,211,200,200,217,289,289,283,311,283,239,217,267,239,256,222,172,150,172,189,239,233,228,206,239,222,239,250,250,222,222,239,206,217,228,256,278,283,239,194,189,272,217,228,228,267,250,278,272,228,233,222,194,217,244,250,239,228,244,222,244,250,206,217,239,250,244,217,189,217,194,194,206,200,222,222,217,233,261,172,189,233,261,239,256,189,194,228,239,161,250,228,239,267,267,250,289,206,206,211,172,167,194,167,228,278,161,161,194,156,161,189,100,178,194,217,211,150,178,189,111,156,150,100,100,111,117,111,139,167,178,172,183,200,206,211,133,133,94,94,106,106,67,39,94,117,117,117,83,11,-17,22,133,67,56,83,128,150,189,167,117,56,11,6,28,78,128,94,-6,-17,-50,-44,-44,-61,-72,-56,0,0,-17,0,0,-6,17,39,0,6,11,-39,-61,-44,-78,67,67,-11,-50,-44,44,83,-50,-22,-39,-94,-78,-50,-117,-61,56,0,0,72,83,-11,-33,-111,-94,-50,-67,-33,-22,-33,-6,-56,-94,-100,-83,-67,-28,-156,-122,-156,-122,-72,-72,-89,-89,-56,17,-111,-100,-89,-56,-44,-56,-33,-78,22,0,-39,-89,-122,-72,56,22,0,39,72,39,-61,-22,-28,-22,-11,-6,-6,-72,-28,-22,-83,-50,-6,56,61,-78,-17,-128,-83,-33,22,89,56,50,11,6,72,-50,-28,44,83,100,111,72,72,11,39,11,-39,44,89,61,106,161,83,11,72,44,150,117,-6,22,39,-33,-6,78,122,67,22,78,144,167,150,156,128,150,78,128,106,44,206,272,217,300,250,161,150,194,128,156,178,139,156,133,206,222,67,144,167,189,139,194,194,89,106,183,233,311,228,172,150,144,172,144,167,111,139,167,183,189,200,222,150,211,239,189,206,222,222,217,183,206,194,144,200,178,228,239,244,261,283,211,200,239,233,194,228,178,189,156,217,206,194,183,217,239,222,183,194,178,222,239,211,200,194,228,206,239,239,206,244,233,228,261,244,233,183,244,206,222,256,211,211,211,206,200,250,256,256,256,267,283,283,294,283,244,267,239,256,239,233,228,206,189,194,167,194,178,200,222,239,233,222,200,217,239,228,189,200,206,194,211,189,178,156,167,156,194,217,178,239,189,156,139,133,133,122,67,61,106,189,178,117,133,89,133,100,117,89,61,67,56,28,78,89,100,100,133,139,128,83,128,94,128,133,89,89,117,139,94,94,89,22,50,0,78,150,183,94,83,94,156,111,128,67,61,100,122,61,56,39,50,83,72,83,22,39,56,22,17,89,94,22,-11,-33,-39,0,11,-33,-94,-61,-6,17,17,-72,-150,-94,-94,-61,-61,-83,-100,-28,0,28,28,-22,-144,-67,-39,-11,-100,-128,-100,-83,-83,-61,-100,-133,-78,-78,-83,-56,6,0,-11,17,0,-22,-11,6,33,6,78,83,-22,-39,-50,-139,-150,-83,-67,-61,-6,-33,-44,-83,-83,-67,-44,-22,-39,-33,-72,-44,-44,-28,-28,-22,-11,-17,-44,33,-11,17,0,44,11,50,17,56,22,28,22,78,61,61,67,117,117,83,50,72,89,122,133,139,133,111,128,50,56,83,61,-22,28,50,78,28,78,200,261,261,156,194,156,222,244,28,78,128,117,133,150,156,144,39,94,133,172,183,100,122,161,139,144,39,111,133,172,267,244,244,161,233,144,156,133,6,94,106,89,139,206,128,194,217,206,183,239,267,256,233,261,289,317,278,228,244,244,289,222,250,211,228,233,122,178,178,122,167,217,161,206,228,228,172,200,244,267,256,244,211,244,228,228,206,261,239,178,167,172,222,261,272,306,317,311,311,256,250,272,278,261,278,272,256,272,239,250,256,256,244,206,278,233,244,267,256,233,206,211,239,250,272,278,261,206,211,250,272,261,267,228,244,239,189,244,239,217,250,217,194,172,167,222,189,183,206,239,267,289,289,289,294,283,178,139,189,267,167,133,167,206,128,189,156,133,144,133,167,194,161,189,194,200,278,167,150,167,222,156,178,144,133,139,89,94,117,156,189,139,161,150,122,144,122,61,106,139,94,94,128,72,50,89,106,161,200,178,144,56,67,22,6,61,78,39,22,0,44,6,33,89,128,150,161,156,56,106,78,33,17,56,33,89,106,28,6,6,-22,-6,39,100,111,-17,-11,-28,-61,-61,-67,-61,-106,-33,0,56,-17,-94,-83,-67,-56,-28,-22,-22,-72,-50,-67,-67,-78,-89,-89,-33,-39,11],"type":"box","name":"Boonville, NY","marker":{"color":"rgba(68,1,84,1)","line":{"color":"rgba(68,1,84,1)"}},"line":{"color":"rgba(68,1,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(33,144,141,0.5)","x":[2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010],"y":[-17,22,111,0,67,100,11,6,-28,-11,-11,-6,-44,-22,-28,11,6,-83,-78,-50,22,-6,-17,22,28,22,-44,11,17,50,-67,-17,61,94,39,11,11,50,-6,17,-106,-78,-56,22,-33,-33,-11,-22,-17,-50,-72,-44,-11,-6,28,33,17,39,33,144,89,56,67,67,161,161,178,189,194,206,139,133,117,128,22,78,83,128,33,83,250,267,261,200,250,233,283,289,78,128,172,133,144,178,189,183,72,100,139,189,194,178,156,200,111,106,67,117,167,244,300,289,233,250,256,200,183,200,44,117,122,72,172,261,178,206,233,233,161,283,294,250,239,283,311,333,322,272,278,272,322,250,289,250,272,283,256,206,194,144,222,250,289,228,250,256,211,211,283,289,289,272,272,289,278,272,239,294,267,239,206,206,250,306,317,344,350,339,350,311,278,300,306,278,294,311,306,317,283,300,278,294,272,250,311,244,267,289,300,272,250,250,272,272,278,322,289,250,250,289,306,294,300,222,239,256,217,289,272,278,283,250,256,206,194,206,206,228,222,267,300,311,311,317,317,311,178,194,233,294,211,139,172,222,156,200,189,156,189,189,217,217,183,217,256,239,311,239,189,211,244,211,239,167,156,156,89,122,167,172,211,161,194,194,156,172,128,72,122,161,111,122,139,94,56,150,178,206,217,200,183,72,111,61,22,83,106,56,56,39,61,67,61,133,139,150,156,156,106,139,106,78,44,89,67,139,144,6,56,50,28,44,61,133,156,0,11,-11,-33,0,-94,-67,-61,-72,-22],"type":"box","name":"East Sidney, NY","marker":{"color":"rgba(33,144,141,1)","line":{"color":"rgba(33,144,141,1)"}},"line":{"color":"rgba(33,144,141,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(253,231,37,0.5)","x":[2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010],"y":[-22,-61,-144,-28,17,44,106,106,150,111,83,39,11,11,-11,-39,-44,-22,17,-22,-94,-44,-28,-61,-72,-61,-28,-22,28,67,-50,-61,-11,-22,0,61,61,-11,-50,-11,11,6,-122,-94,-11,-11,-6,-61,78,-28,-11,-61,-72,-39,-44,17,0,0,-33,-139,-50,0,6,94,67,-22,22,22,-11,-61,-44,6,-6,11,89,33,0,-17,61,39,28,-6,-33,-11,28,50,56,28,-11,-39,78,133,139,11,94,94,94,128,133,167,194,183,67,128,17,78,111,172,228,239,294,267,256,250,217,239,261,189,133,89,78,78,128,117,194,194,194,211,189,194,189,194,206,172,256,256,167,200,156,256,156,94,144,150,183,200,239,167,133,189,211,217,150,256,233,178,261,289,289,294,300,306,239,222,311,317,272,278,261,256,189,211,256,256,233,228,261,256,233,256,261,278,244,250,261,261,239,261,289,300,306,311,228,267,294,228,239,261,267,289,289,278,239,239,256,244,239,267,256,261,244,244,256,256,256,250,261,250,283,256,244,183,228,222,233,222,217,233,222,233,233,272,161,200,261,294,272,194,206,206,261,267,206,239,244,256,278,300,256,300,222,189,222,172,172,211,189,244,294,278,172,206,144,194,222,167,172,194,233,250,178,189,167,122,178,139,100,117,139,189,189,172,183,222,222,228,161,150,94,100,111,83,94,39,89,150,128,150,100,50,0,28,139,78,39,56,156,167,178,150,122,50,22,0,22,78,139,117,106,-22,-33,-61,-33,-78,-94,-61,11,28,6,-11,6,-11,11,56,17,22,22,-44,-50,-33,-33,56,83,-50,-39,-122,22,94,-6,11,-28,-72,-111,-39,-111,0,67,17,-28,89,139,-11,-11,0,-33,-50,-61,-6,-11,-44,17,-22,-33,-11,-139,-128,-128,-111,-50,-17,-67,-44,-17,39,0,-61,-72,-33,-33,-50,-28,-94,17,17,-78,-139,-139,-44,61,50,-28,83,89,83,-61,-44,-33,-39,-11,11,11,-67,-28,-11,-61,-83,17,56,83,-72,-22,-122,-111,6,22,89,67,50,0,28,78,-72,-22,50,100,106,128,89,100,0,50,0,-50,28,117,89,106,172,106,22,72,61,150,183,28,50,56,0,56,111,78,56,-22,78,128,156,150,172,89,178,106,128,72,233,278,278,150,317,261,200,167,189,133,172,178,194,178,144,222,200,139,161,217,200,183,206,106,122,206,256,272,194,211,206,156,200,139,217,172,150,172,139,161,183,194,228,211,228,194,250,194,239,228,217,250,200,250,239,172,183,200,244,239,267,289,311,256,228,267,244,239,250,239,228,222,228,200,211,239,272,256,200,194,189,233,267,233,211,217,250,244,239,250,222,272,267,239,289,289,228,233,261,228,239,294,217,217,194,228,217,272,267,278,283,289,294,300,311,294,256,267,261,256,267,239,250,200,194,228,211,217,178,217,239,239,256,222,222,228,256,239,228,228,222,217,211,172,178,206,156,167,222,244,233,239,200,144,194,156,189,122,72,56,67,50,128,122,100,144,133,78,78,28,17,17,56,72,78,150,89,139,156,167,111,122,83,28,72,33,122,156,206,133,89,94,167,89,78,78,72,144,156,78,72,78,122,117,106,78,72,67,78,50,111,111,94,17,22,0,-11,33,22,-22,-11,28,17,17,17,-67,-150,-83,-39,-50,-78,-50,-39,17,39,50,33,-17,-50,-11,17,0,-94,-111,-78,-72,-56,-56,-106,-33,-28,-44,-83,-11,44,50,28,17,17,11,-11,39,17,61,106,100,0,-11,-89,-156,-50,-50,-72,-28,-28,-56,-39,-67,-78,-28,-39,-22,-50,-61,-61,-11,-28,11,-6,-17,0,6,22,11,17,17,6,33,17,44,33,22,17,11,44,44,89,78,111,139,128,89,67,83,139,139,144,150,144,89,39,39,89,122,56,50,72,61,61,50,233,294,294,244,211,161,200,200,128,78,117,111,106,150,150,156,139,100,144,144,183,189,128,178,167,200,150,94,150,189,272,272,211,183,261,183,161,139,122,94,111,139,150,161,183,133,206,222,222,228,239,250,294,261,278,289,300,256,256,239,244,311,228,272,211,239,239,189,189,183,167,178,222,189,250,228,222,222,228,261,289,267,244,250,250,244,233,200,244,256,244,172,189,233,261,283,322,328,328,333,306,272,283,317,278,272,300,261,294,250,261,267,278,250,239,283,244,272,272,283,228,206,222,256,256,272,278,272,256,189,239,278,278,267,228,278,272,228,267,250,217,272,211,217,189,189,217,200,206,189,250,278,289,306,306,311,306,244,150,200,267,200,144,167,217,161,161,139,122,139,156,189,189,156,178,172,189,278,222,167,167,239,200,256,150,128,117,117,139,133,172,178,122,161,144,111,150,144,78,122,144,106,100,150,128,56,89,194,189,217,194,172,56,67,56,56,56,39,22,61,50,67,78,111,161,156,156,100,122,106,72,33,72,28,128,150,89,39,56,33,33,67],"type":"box","name":"Wanakena Ranger School, NY","marker":{"color":"rgba(253,231,37,1)","line":{"color":"rgba(253,231,37,1)"}},"line":{"color":"rgba(253,231,37,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-<div id="chart-c" class="section level3">
-<h3>Chart C</h3>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
-</div>
-<div class="plotly html-widget html-fill-item" id="htmlwidget-7a8355f94f14221a4b1d" style="width:576px;height:460.8px;"></div>
-<script type="application/json" data-for="htmlwidget-7a8355f94f14221a4b1d">{"x":{"visdat":{"4e905f4c233a":["function () ","plotlyVisDat"]},"cur_data":"4e905f4c233a","attrs":{"4e905f4c233a":{"x":{},"mode":"markers","color":{},"colors":"viridis","alpha":0.5,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"tmin"},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-211,-217,-106,-194,-189,-100,-100,-56,-200,-211,-217,-167,-128,-250,-267,-244,-222,-222,-122,-139,-206,-161,-89,-122,-211,-178,-156,-133,-94,-100,-144,-161,-78,-122,-206,-239,-239,-150,-78,-78,-83,-28,28,-122,-161,-161,-156,-144,-128,-50,-122,-122,-111,-100,-178,-178,-128,-22,-167,-183,-144,-200,-200,-178,-111,0,0,0,-50,-44,-100,-144,-144,-72,-56,-39,-6,6,-89,-106,-106,-117,-117,-111,-44,0,0,44,-11,-28,-28,17,22,-17,-17,-17,-39,-56,-50,-17,-28,-61,-61,-56,-28,-17,-6,22,6,11,17,39,0,-17,-6,117,94,133,-6,17,72,33,33,50,44,67,67,78,94,39,-11,-6,17,44,50,61,11,0,6,22,111,128,94,0,39,72,122,83,78,-6,17,61,44,56,89,89,83,83,100,100,139,106,94,94,83,100,83,100,111,122,139,117,128,144,150,128,122,139,128,128,133,139,122,78,78,111,106,89,94,133,94,83,78,89,111,133,144,111,106,128,139,139,150,139,144,144,144,156,133,133,133,139,100,111,156,106,100,89,106,150,172,156,161,150,156,156,167,189,178,128,150,172,172,156,128,144,61,61,89,128,72,67,72,72,94,94,72,72,117,122,89,56,56,117,72,72,67,72,94,11,11,22,72,133,128,61,28,61,94,67,17,6,6,33,56,67,50,56,28,28,56,6,-33,-22,-11,-50,-39,-39,-22,-33,-33,61,72,-6,-11,33,-6,0,44,56,61,78,17,-28,-22,-44,-39,-28,-50,-28,44,39,-28,-44,-44,-39,83,-11,-44,-44,-33,28,33,33,-11,0,44,22,-6,-6,-6,0,-67,-44,-22,-22,-44,-67,-67,-67,-83,-44,-122,-117,-106,-78,-11,-122,-194,-239,-233,-150,-144,-189,-189,-161,-117,-89,-11,-28,-194,-200,-167,-67,-111,-178,-178,-156,-150,-122,-128,-172,-228,-178,-111,-189,-133,-61,-28,-50,-33,-33,-44,-83,-111,-144,-144,-33,-33,-50,-94,-228,-272,-267,-178,-133,-100,-161,-167,-161,-178,-167,-161,-156,-144,-167,-178,-178,-83,-106,-83,-56,-61,-50,-100,-100,-83,-22,-22,-22,-28,-28,-28,-33,-33,-67,-78,-111,-94,-39,-56,-50,-50,28,22,17,-6,-28,-22,-11,6,33,-22,-11,6,-22,-22,-94,-111,-106,-28,-11,-11,6,6,100,44,44,56,72,100,28,-22,-11,-17,-22,-17,-11,39,0,-6,-6,11,17,33,-22,-17,0,61,17,-11,0,11,61,139,167,89,56,72,11,22,-28,-28,-28,-11,-6,11,50,39,44,61,78,83,100,117,133,128,144,150,150,100,111,100,100,122,106,122,139,144,100,61,61,61,83,89,94,128,139,83,100,111,106,122,167,133,122,144,167,111,117,128,156,139,61,78,83,94,139,161,189,183,194,206,172,139,144,172,178,172,172,167,156,161,156,150,144,150,150,167,122,128,144,156,122,72,94,122,161,172,194,144,117,83,172,172,183,161,150,150,161,161,133,133,133,117,100,122,128,100,106,133,83,83,111,133,144,172,178,183,133,83,78,83,139,106,100,72,72,111,100,33,39,61,44,61,67,44,61,94,106,117,72,83,106,122,100,106,28,17,17,33,61,72,67,56,0,0,22,-6,-6,33,39,6,0,-17,6,17,-44,-33,22,50,106,111,89,33,0,-11,-33,-50,-50,-44,11,-22,-50,-39,-33,-11,-33,-33,-6,11,28,0,22,-6,-33,-39,-78,-78,33,-33,-89,-78,-44,-117,-56,-56,22,-50,-50,-78,-89,-100,-100,-139,-172,-183,-133,-39,-17,-150,-161,-150,-117,-111,-139,-139,-94,-94,-83,-89,-122,-133,-161,-167,-94,-72,-83],"mode":"markers","type":"histogram","name":"Boonville, NY","marker":{"color":"rgba(68,1,84,0.5)","line":{"color":"rgba(68,1,84,1)"}},"textfont":{"color":"rgba(68,1,84,0.5)"},"error_y":{"color":"rgba(68,1,84,0.5)"},"error_x":{"color":"rgba(68,1,84,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-144,-83,-178,-144,-139,-217,-178,-178,-78,-144,-189,-67,-111,-111,-100,-61,-78,-133,-172,-172,-150,-11,-11,-39,-39,-67,-44,-94,-128,-172,-106,-33,-128,-128,-122,-150,-128,-183,-94,-94,-61,-44,-11,-22,-22,-22,-11,17,17,17,39,-50,-61,-67,-44,-39,-28,22,22,0,-61,-61,-106,-72,6,28,22,17,22,33,44,-11,6,56,72,50,0,17,-39,-39,-44,-44,-44,39,11,-28,-17,-11,0,-44,-50,-6,78,50,-33,-39,-17,50,133,133,61,33,44,0,6,0,-28,-50,-11,0,6,72,50,17,28,28,94,78,83,139,100,111,111,122,100,122,94,117,117,100,106,150,150,150,50,44,56,67,72,78,183,167,89,100,122,100,100,172,117,117,117,206,144,128,139,139,156,44,67,56,67,111,111,172,178,167,183,183,128,133,144,189,183,183,156,167,156,172,172,122,150,161,211,111,106,117,150,100,72,100,156,167,200,206,150,100,89,172,178,183,161,156,133,167,178,133,133,133,133,83,122,167,139,144,144,78,72,100,106,106,144,150,156,117,106,61,122,150,122,117,78,83,133,94,33,44,83,61,106,56,28,22,94,117,178,78,78,111,89,94,128,33,17,44,67,83,78,17,22,-22,-11,11,-22,-11,-22,61,-17,-6,-28,-22,-17,6,-6,28,56,61,133,67,67,0,0,-11,-44,-50,-56,33,6,-50,-44,0,17,-56,-78,-72,-50,56,39,33,33,-17,-33,-56,-56,67,6,-72,-17,-44,-61,-56,-56,61,-39,-50,-50,-61,-61,-111,-122,-117,-122,-128,-72],"mode":"markers","type":"histogram","name":"East Sidney, NY","marker":{"color":"rgba(33,144,141,0.5)","line":{"color":"rgba(33,144,141,1)"}},"textfont":{"color":"rgba(33,144,141,0.5)"},"error_y":{"color":"rgba(33,144,141,0.5)"},"error_x":{"color":"rgba(33,144,141,0.5)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[-222,-250,-239,-206,-222,-172,-122,-72,-133,-106,-261,-256,-278,-222,-172,-122,-167,-250,-228,-61,-33,-194,-261,-228,-167,-100,-106,-94,-172,-178,-150,-161,-200,-222,-172,-100,-39,-56,-50,50,-50,-111,-133,-111,-150,-128,-56,-111,-133,-100,-61,-133,-150,-122,0,-106,-172,-183,-150,-189,-183,-183,6,17,-28,-44,-72,-72,-144,-172,-133,-89,-72,-61,-28,-94,-111,-150,-78,-128,-172,-122,-39,-22,-39,17,-11,-22,-33,-11,-11,-22,-22,-44,-50,-33,-44,-39,-39,-61,-50,-44,-33,-28,-133,17,11,17,33,0,-22,111,100,50,72,17,-17,83,83,50,50,78,50,94,100,111,89,17,17,33,117,78,100,44,33,-17,83,150,117,78,94,67,22,106,89,128,83,0,78,28,56,22,72,117,44,67,111,117,128,139,122,83,122,111,139,122,133,117,67,144,128,128,178,161,156,94,128,139,139,139,178,122,122,133,133,100,139,172,122,94,122,100,122,156,156,139,117,144,150,161,133,156,161,128,167,200,167,161,161,178,122,172,117,100,50,106,111,183,178,139,128,133,144,150,183,189,128,167,150,183,194,139,133,39,61,106,89,78,33,61,72,72,106,117,89,78,128,117,61,89,128,44,117,72,39,39,6,-11,22,72,156,100,61,61,50,106,11,17,6,-11,-39,117,-33,44,83,44,44,-11,0,6,-67,-33,-56,-61,-67,50,-11,-56,67,11,11,0,-39,-33,-22,-28,-22,50,44,22,-22,-17,-39,-6,6,-61,-67,6,22,56,0,-39,0,61,56,17,28,-11,-39,-67,-33,33,-6,-28,-39,-28,-56,-56,-61,-89,-94,-78,-33,-61,-128,-217,-289,-211,-133,-117,-167,-239,-150,-89,-56,-6,-61,-189,-206,-161,-39,-156,-161,-133,-122,-106,-111,-128,-222,-228,-139,-111,-222,-172,-111,6,-6,-6,-33,-56,-100,-194,-222,-83,-72,-28,-44,-161,-222,-311,-194,-167,-139,-133,-206,-122,-167,-167,-128,-239,-133,-94,-117,-244,-122,-72,-150,-78,-39,-56,-44,-33,-83,-122,-56,-6,-6,0,-11,0,-22,-44,-50,-72,-83,-22,17,-22,-28,44,50,44,6,0,-39,44,0,-22,11,-6,6,-6,-11,-11,-94,-94,-50,28,0,6,28,122,144,78,67,83,106,67,17,6,39,-6,-33,0,56,78,22,11,17,11,39,-6,-11,11,28,-39,0,-11,17,39,100,156,139,100,61,89,11,28,6,-6,-11,6,28,0,78,78,44,50,111,100,89,106,156,106,150,156,183,150,128,139,117,117,178,150,156,128,117,78,89,94,83,106,94,139,139,111,89,139,128,117,178,183,144,150,178,89,139,150,156,183,122,94,111,117,122,189,206,172,189,217,200,183,161,167,128,150,189,206,211,183,150,133,139,133,178,211,167,178,178,128,144,128,39,44,128,178,189,189,72,44,67,117,156,117,106,78,128,167,139,106,72,44,44,39,139,89,111,122,133,78,56,117,72,150,139,150,128,106,89,56,122,117,106,50,17,56,89,67,39,22,17,17,17,0,0,78,17,100,117,106,100,128,78,94,94,28,17,22,78,78,83,83,11,0,28,11,0,61,67,44,22,0,-33,72,6,-17,17,-6,100,94,78,78,-17,-17,-56,-100,0,6,-17,-39,-39,6,-11,-44,-6,-11,33,28,28,39,-6,-33,-50,-72,-22,22,-61,-78,-22,-144,-100,-22],"mode":"markers","type":"histogram","name":"Wanakena Ranger School, NY","marker":{"color":"rgba(253,231,37,0.5)","line":{"color":"rgba(253,231,37,1)"}},"textfont":{"color":"rgba(253,231,37,0.5)"},"error_y":{"color":"rgba(253,231,37,0.5)"},"error_x":{"color":"rgba(253,231,37,0.5)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
+
 
 </div>
 
 <script>
-$(document).ready(function() {
-  // add bootstrap table styles to pandoc tables
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed table-sm');
 
-  // initialize mathjax
-  var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-  document.getElementsByTagName("head")[0].appendChild(script);
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
 
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
 });
 </script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-  FlexDashboard.init({
-    fillPage: true,
-    orientation: "columns",
-    storyboard: false,
-    defaultFigWidth: 576,
-    defaultFigHeight: 460,
-    defaultFigWidthMobile: 360,
-    defaultFigHeightMobile: 460,
-    resize_reload: true
-  });
-  var navbar = $(".navbar").first();
-  var body = $("body").first();
-  var sidebar = $(".section.sidebar").first();
-  function addNavbarPadding() {
-    var navHeight = navbar.outerHeight();
-    body.css("padding-top", (navHeight + 8) + "px");
-    sidebar.css("top", navHeight + "px");
-    var resizeEvent = window.document.createEvent("UIEvents");
-    resizeEvent.initUIEvent("resize", true, false, window, 0);
-    window.dispatchEvent(resizeEvent);
-  }
-  if (!window.Shiny) setTimeout(addNavbarPadding, 100);
-  $(document).on("shiny:idle", function() {
-    setTimeout(addNavbarPadding, 50);
-  });
-});
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
 </script>
 
 </body>

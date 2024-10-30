@@ -1,5 +1,5 @@
 ---
-title: "Plotly"
+title: "Plotting With Plotly"
 output: 
   html_document:
     toc: true
@@ -7,21 +7,41 @@ output:
 editor_options: 
   chunk_output_type: console
 ---
+```{r setup, include = FALSE}
 
-### Here are some plots
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE
+)
 
-today' we're making interacive plots in plotly. we'll make examples using the NYC airbnb dataset.
+```
 
+
+## Dataset Description and Import: 
+Below I walk through the steps to create three plots using `plotly` with data pulled from the NY NOAA dataset, available through the `p8105.datasets`. 
+First, I loaded the necessary libraries.
 ```{r}
 library(tidyverse)
 library(p8105.datasets)
 library(plotly)
 ```
 
-Do some initial data cleaning/subsetting.
+Next, I randomly sampled the NY NOAA dataset to select data from only three monitoring stations in NY. The random sample consists of data from Boonville, East Sidney, and the Wanakena Ranger School. I found the station names online by searching with the individual station IDs. It took some digging. 
 ```{r}
 data("ny_noaa")
 
+set.seed(123)
+selected_stations = sample(unique(ny_noaa$id), 3)
+view(selected_stations)
+
+#USC00300785 Boonville, NY
+#USC00302454 East Sidney, NY
+#USC00308944 Wanakena Ranger School, NY
+```
+
+## Clean Data:
+I then filtered the dataset to only include data between January 1, 2008 and December 31, 2010. This should give me enough data to look at patterns over time in my plots. I used `lubridate::year` and `lubridate::month` to extract the year and month from the `date` variable to make new corresponding variables by which to  further `filter` or `group_by` later on. I ensured that the `tmin` and `tmax` variables would be interpreted as numeric, and I changed the station ids to the station names so my legends would be more informative. 
+```{r}
 ny_noaa = 
   ny_noaa %>% 
   filter(date >= "2008-01-01" & date <= "2010-12-31", id %in% c("USC00302454", "USC00300785", "USC00308944"))%>% 
@@ -37,47 +57,75 @@ ny_noaa =
       id == "USC00308944" ~ "Wanakena Ranger School, NY")
   )
 
-	
-#USC00300785 Boonville, NY
-#USC00302454 East Sidney, NY
-#USC00308944 Wanakena Ranger School, NY
-
-set.seed(123)
-selected_stations = sample(unique(ny_noaa$id), 3)
-view(selected_stations)
-
 ```
 
-Histogram
+After seeing some extreme temperatures in my initial plots, I read the dataset instructions more carefully, I discovered the `tmax` and `tmin` values appear ihn tenths of degrees C. To convert to true, interpretable values, I have to divide the values in these two variable columns by 10. I also converted the `prcp ` observations to millimeters (mm), as the available observations were originally in tenths of mm, according to the NY NOAA dataset instructions. 
+
+```{r}
+ny_noaa = 
+  ny_noaa %>% 
+  mutate(
+    tmin = tmin/10,
+    tmax = tmax/10, 
+    prcp = prcp/10,
+  )
+```
+
+## Create a Histogram Using Plotly:
+
+I filtered the data further to only include observations for 2009 and 2010. I plotted the frequency of different minimum temperatures for the three monitoring stations and adjusted the x-axis range to fit the range of observations. 
 ```{r}
 
 ny_noaa %>% 
   filter(year >= 2009) %>% 
   plot_ly(
     x = ~tmin, color = ~id,
-  type = "histogram", mode = "markers", alpha = 0.5, colors = "viridis"
+  type = "histogram", 
+  mode = "markers", 
+  alpha = 0.5, 
+  colors = "viridis"
+  )%>%
+  layout(
+    title = list(
+      text = "Frequency of Minimum Temperature in 2009 and 2010 for three NY Monitors",
+      font = list(size = 12) 
+    ),
+    xaxis = list(
+      title = "Minimum Temps in Degrees C", 
+      range = c(min(ny_noaa$tmin), 30)
+    ),
+    yaxis = list(
+      title = "Frequency")
   )
 ```
 
-Boxplot
+## Create a Boxplot Using Plotly:
+Next, I plotted the distributions of maximum temperatures from 2008-2010 for the three stations. 
+
 ```{r}
 ny_noaa %>%
   plot_ly(
     x = ~year, y = ~tmax, color = ~id,
     type = "box", colors = "viridis"
   )%>%
-  layout(
-    title = "Distribution of Maximum Temperature from 2005-2010 for three NY Monitors", 
+layout(
+    title = list(
+      text = "Distribution of Maximum Temperatures from 2005-2010 for Three NY Monitors",
+      font = list(size = 12)
+    ), 
     boxmode = "group",
 xaxis = list(
     title = "Year",
     tickvals = unique(ny_noaa$year)),
-    yaxis = list(title = "Maximum Temperature")
+    yaxis = list(title = "Maximum Temps Degrees C")
   )
 ```
 
 
-Lineplot
+## Create a Lineplot Using Plotly:
+Finally, I plotted a mean monthly precipitation over time lineplot for the three monitoring stations, across the three years of observation. 
+
+I began by rounding each date to the start of the month using `floor_date` to create a `year_month` variable, ensuring all dates within the same month align to a single value. This `year_month` variable was necessary for calculating monthly averages by grouping all days within each month together. 
 ```{r}
 
 ny_noaa %>% 
@@ -91,11 +139,14 @@ ny_noaa %>%
     type = "scatter", mode = "lines", colors = "viridis"
   ) %>%
   layout(
-    title = "Monthly Average Precipitation Over Time by Station",
+    title = list(
+      text = "Monthly Average Precipitation Over Time For Three Stations",
+      font = list(size = 12)
+      ),
     xaxis = list(title = "Date"),
-    yaxis = list(title = "Monthly Average Precipitation (inches)"),
-    legend = list(title = list(text = "Station ID"))
+    yaxis = list(title = "Monthly Average Precipitation (mm)")
   )
 
 ```
 
+All of these plots can be viewed in the [dashboard](dashboard.html).
