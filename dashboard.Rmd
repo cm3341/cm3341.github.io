@@ -30,6 +30,14 @@ ny_noaa =
       id == "USC00302454" ~ "East Sidney, NY",
       id == "USC00300785" ~ "Boonville, NY",
       id == "USC00308944" ~ "Wanakena Ranger School, NY")
+)
+    
+ny_noaa = 
+  ny_noaa %>% 
+  mutate(
+    tmin = tmin/10,
+    tmax = tmax/10, 
+    prcp = prcp/10,
   )
 ```
 
