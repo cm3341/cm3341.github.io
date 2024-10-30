@@ -3,12 +3,12 @@ output_dir: "."
 navbar:
   title: "Carolina Montes Garcia"
   right:
+        - text: "Resume"
+      href: resume.html
     - text: "Plotly"
       href: plotly.html
     - text: "Dashboard"
       href: dashboard.html
-    - text: "Resume"
-      href: resume.html
     - icon: fa-envelope fa-lg
       href: mailto:<cm3341@protonmail.com>
     - icon: fa-github fa-lg
