@@ -1,7 +1,7 @@
-name: "Yay internet!"
+name: "Professional Website"
 output_dir: "."
 navbar:
-  title: "Home"
+  title: "Carolina Montes Garcia"
   right:
     - text: "Plotly"
       href: plotly.html

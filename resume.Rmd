@@ -1,11 +1,13 @@
 ---
-title: "Academic and Professional Background"
+title: "Resume"
 output: 
   html_document:
     toc: true
     toc_float: true
     theme: cosmo
 ---
+
+## Professional Experience 
 
 **Project Manager**
 
@@ -87,12 +89,18 @@ Bergen Community College, Phi Theta Kappa
 
 ## Publications
 
-Frailty worsens antidepressant treatment outcomes in late life depression. The American Journal of Geriatric Psychiatry, December 2020.
+Brown, P.J., Ciarleglio, A., Roose, S.P., Montes Garcia, C., Chung, S., Alvarez, J., Stein, A., Gomez, S., Rutherford, B.R. (December 2020). Frailty worsens antidepressant treatment outcomes in late life depression. In Press, The American Journal of Geriatric Psychiatry. [Read pub](https://doi.org/10.1016/j.jagp.2020.12.024)
 
-The COVID-19 pandemic as a traumatic stressor: Mental health responses of older adults with chronic PTSD. The American Journal of Geriatric Psychiatry, September 2020.
 
-Optimizing outcomes of treatment-resistant depression in older adults (OPTIMUM): Study design and treatment characteristics. The American Journal of Geriatric Psychiatry, October 2019.
+Rutherford, B.R., Choi, C.J., Chrisanthopoulos, M., Salzman, C., Zhu, C., Montes-Garcia, C., Liu, Y., Brown, P.J., Yehuda, R., Flory, J., Neria, Y., Roose, S.P. (September 2020). The COVID-19 pandemic as a traumatic stressor: Mental health responses of older adults with chronic PTSD. In Press, The American Journal of Geriatric Psychiatry. [Read pub](https://doi.org/10.1016/j.jagp.2020.10.010)
 
-Declining Skeletal Muscle Mitochondrial Function Associated with Increased Risk of Depression in Later Life. The American Journal of Geriatric Psychiatry, September 2019.
 
-My Problems Are Solvable: Idiographic Methods Offset Age Differences in Interpersonal Problem Solving. Frontiers in Psychology, February 2019.
+Cristancho, P., Lenard, E., Lenze, E.J., Miller, J.P, Brown, P.J., Roose. S.P., Montes Garcia, C., Blumberger, D.M., Mulsant, B.H., Laverstky, H., Rollman, B.L., Reynolds, C.F., Karp, J.F. (October 2019). Optimizing outcomes of treatment-resistant depression in older adults (OPTIMUM): Study design and treatment characteristics of the first 396 participants randomized. The American Journal of Geriatric Psychiatry, 27(10), 1138-1152. [Read pub](https://doi.org/10.1016/j.jagp.2019.04.005)
+
+
+Brown, P.J., Brennan, N., Ciarleglio, A., Chen, C., Montes Garcia, C., Gomez, S., Roose, S.P., Rutherford, B.R., Simonsick, E.M., Spencer, R.G., Ferruci, L. (September 2019). Declining Skeletal Muscle Mitochondrial Function Associated with Increased Risk of Depression in Later Life. The American Journal of Geriatric Psychiatry, 27 (9), 963-971. [Read pub](https://doi.org/10.1016/j.jagp.2019.03.022)
+
+
+Artistico, D, Cervone, D, Montes Garcia, C. (February 2019). My Problems Are Solvable: Idiographic Methods Offset Age Differences in Interpersonal Problem Solving Among Young, Middle-Aged, and Older Adults. Frontiers in Psychology. [Read pub](https://doi.org/10.3389/fpsyg.2019.00276)
+
+[Download full resume](cmg resume 10_24.pdf)

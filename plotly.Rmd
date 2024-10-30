@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 ## Dataset Description and Import: 
 Below I walk through the steps to create three plots using `plotly` with data pulled from the NY NOAA dataset, available through the `p8105.datasets`. 
-First, I loaded the necessary libraries.
+First, I loaded the necessary libraries, including `plotly` which I will use here for the creation of interactive plots.
 ```{r}
 library(tidyverse)
 library(p8105.datasets)
@@ -59,7 +59,7 @@ ny_noaa =
 
 ```
 
-After seeing some extreme temperatures in my initial plots, I read the dataset instructions more carefully, I discovered the `tmax` and `tmin` values appear ihn tenths of degrees C. To convert to true, interpretable values, I have to divide the values in these two variable columns by 10. I also converted the `prcp ` observations to millimeters (mm), as the available observations were originally in tenths of mm, according to the NY NOAA dataset instructions. 
+After seeing some extreme temperatures in my initial plots, I read the dataset instructions more carefully, and I discovered the `tmax` and `tmin` values appear in tenths of degrees C. To convert to true, interpretable values, I have to divide the values in these two variable columns by 10. I also converted the `prcp ` observations to millimeters (mm), as the available observations were originally in tenths of mm, according to the NY NOAA dataset instructions. 
 
 ```{r}
 ny_noaa = 

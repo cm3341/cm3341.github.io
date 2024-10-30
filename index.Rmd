@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Carolina Montes Garcia"
 output: 
   html_document:
     toc: true
@@ -11,5 +11,6 @@ output:
 
 Welcome to my professional page. My journey has been rooted in community-centered research and public health, particularly within underserved populations. I currently work as a project manager at Columbia University's NIEHS P30 Center for Environmental Health and Justice in Northern Manhattan, where I help foster collaborations between community partners and researchers. My experiences span from managing large-scale clinical research projects to developing outreach programs for minority mental health and advancing environmental justice in urban settings.
 
-Currently, my interests lie at the intersections of climate and health, with aninterest in understanding the migration patterns of individuals displaced by climate events and the health impacts of displacement. 
-In my spare time, I am an artist who finds expression through oil, watercolor, and mixed media collage, exploring themes of the self, internal states, cultural identity, and nature.
+Currently, my interests lie at the intersections of climate and health, with an interest in understanding the migration patterns of individuals displaced by climate events and the health impacts of displacement. 
+
+In my spare time, I am an artist who finds expression through oil, watercolor, and mixed media collage, exploring themes of the self, internal states, cultural identity, and nature. I continually seek to bridge my passion for advancing public health with my love of the arts. 
